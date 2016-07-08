@@ -1,0 +1,20 @@
+{
+    "name": "nmarfurt/measurements",
+    "description": "A library for handling measurements and to represent a dimensional unit of measure",
+	"license": "MIT",
+	"author": {
+		"name": "Nicolas Marfurt",
+		"email": "nmarfurt@gmail.com"
+	},
+    "require": {
+        "php": ">=5.6.0"
+    },
+	"require-dev": {
+	},
+	"autoload": {
+		"psr-4": {
+			"Measurements\\": "src/",
+			"Tests\\": "tests/"
+		}
+	}
+}
