@@ -129,25 +129,30 @@ For example, define our new _jump_ unit as custom subclass:
 
 You can create a new subclass of `Dimension` to describe a new unit dimension.
 
-For example, the Foundation framework does not define any units for radioactivity. Radioactivity is the process by which the nucleus of an atom emits radiation.
-The SI unit of measure for radioactivity is the becquerel (Bq), which is defined as the quantity of radioactive material in which one nucleus decays per second (1 Bq = 1 s-1).
-Radioactivity is also commonly described in terms of curies (Ci), a unit defined relative to the decay of one gram of the radium-226 isotope (1 Ci = 3.7 × 1010 Bq).
-You can implement a CustomUnitRadioactivity class that defines both units of radioactivity as follows:
+For example, let define units for radioactivity. The SI unit of measure for radioactivity is the becquerel (Bq), which is defined as the quantity of radioactive material in which one nucleus decays per second (1 Bq = 1 s-1). Radioactivity is also commonly described in terms of curies (Ci), a unit defined relative to the decay of one gram of the radium-226 isotope (1 Ci = 3.7 × 1010 Bq).
+
+You can implement a `UnitRadioactivity` class that defines both units of radioactivity as follows:
 
 	class UnitRadioactivity extends Dimension {
 
-		public static $becquerel = new UnitRadioactivity("Bq", new UnitConverterLinear(1.0));
+		public static function becquerel()
+		{
+			return new UnitRadioactivity("Bq", new UnitConverterLinear(1.0));
+		}
 
-		public static $curie = new UnitRadioactivity("Ci", new UnitConverterLinear(3.7E10));
+		public static function curie()
+		{
+			return new UnitRadioactivity("Ci", new UnitConverterLinear(3.7E10));
+		}
 		
 		public static function baseUnit()
 		{
-			return $this->becquerel;
+			return static::becquerel();
 		}
 
 	}
 
-## Documentation
+## Generating Documentation
 
 	$ phpdoc -d ./src/ -t ./doc/generated --template="xml"
 	$ phpdocmd doc/generated/structure.xml doc/
