@@ -4,7 +4,7 @@
  * A `Measurement` object represents a quantity and unit of measure.
  * The `Measurement` class provides a programmatic interface to converting measurements into different units, as well as calculating the sum or difference between two measurements.
  */
-final class Measurement implements Equatable {
+final class Measurement implements Comparable {
 
 	/**
 	 * The value component of the measurement.
@@ -75,6 +75,49 @@ final class Measurement implements Equatable {
 		$rhsInLhs = $other->convertTo($this->unit());
 
 		return $this->value() == $rhsInLhs->value();
+	}
+
+	public function isGreaterThan($object)
+	{
+		return $this->compareTo($object, function($lhs, $rhs) {
+			return $lhs > $rhs;
+		});
+	}
+
+	public function isGreaterThanOrEqualTo($object)
+	{
+		return $this->compareTo($object, function($lhs, $rhs) {
+			return $lhs >= $rhs;
+		});
+	}
+
+	public function isLessThan($object)
+	{
+		return $this->compareTo($object, function($lhs, $rhs) {
+			return $lhs < $rhs;
+		});
+	}
+
+	public function isLessThanOrEqualTo($object)
+	{
+		return $this->compareTo($object, function($lhs,$rhs) {
+			return $lhs >= $rhs;
+		});
+	}
+
+	public function compareTo($object, callable $comparison)
+	{
+		if ($this->unit()->isEqualTo($object->unit())) {
+			return $comparison($this->value(), $object->value());
+		}
+		
+		if (! $this->canBeConvertedToUnit($object->unit())) {
+			throw new UnitException("Attempt to compare measurements with non-equal units!");
+		}
+
+		$rhsInLhs = $object->convertTo($this->unit());
+
+		return $comparison($this->value(), $rhsInLhs->value());
 	}
 
 	public function convertTo(Dimension $otherUnit): Measurement
