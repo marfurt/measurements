@@ -96,7 +96,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function micrometers(): UnitLength
 	{
-		return new static("µm", new UnitConverterLinear(1E-6)); // 0.000001
+		return new static("µm", new UnitConverterLinear(1E-6));
 	}
 
 	/**

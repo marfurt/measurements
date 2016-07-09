@@ -10,7 +10,7 @@ This is inspired by the [Measurement API](https://developer.apple.com/reference/
 
 The package can be installed via [Composer](https://getcomposer.org):
 
-	$ composer install nmarfurt/measurements
+	$ composer require nmarfurt/measurements
 
 
 ## Available Classes
@@ -33,7 +33,17 @@ Each instance of an `Dimension`  subclass has a converter, which is used to repr
 
 ### UnitConverter
 
-A `UnitConverter` describes how to convert a unit to and from the base unit of its dimension. `UnitConverterLinear` is a `UnitConverter` subclass for converting between units using a linear equation. You can defined your own converters if needed.
+A `UnitConverter` describes how to convert a unit to and from the base unit of its dimension. `UnitConverterLinear` is a `UnitConverter` subclass for converting between units using a linear equation. You can define your own converters if needed.
+
+
+## Available Units
+
+The library provides concrete subclasses for many of the most common types of physical units:
+
+| Dimension Subclass | Description | Base Unit |
+| ------------------ | ----------- | --------- |
+| UnitDuration       | Unit of measure for duration | seconds `sec` |
+| UnitLength         | Unit of measure for length | meters `m` |
 
 
 ## Usage
@@ -42,60 +52,90 @@ A `UnitConverter` describes how to convert a unit to and from the base unit of i
 
 You can define measurements as follows:
 
-	use Measurements\Measurement;
-	use Measurements\Units\UnitLength;
-	use Measurements\Units\UnitDuration;
+``` php
+use Measurements\Measurement;
+use Measurements\Units\UnitLength;
+use Measurements\Units\UnitDuration;
 
-	$length = new Measurement(4.48, UnitLength::meters());
-	echo $length; // would print: 4.48 m
-	
-	$duration = new Measurement(1.5, UnitDuration::hours());
-	echo $duration; // would print: 1.5 h
+$length = new Measurement(4.48, UnitLength::meters());
+echo $length; // = 4.48 m
+
+$duration = new Measurement(1.5, UnitDuration::hours());
+echo $duration; // = 1.5 hr
+```
 
 ### Converting Measurements
 
-`Measurement` objects of the same dimension can be converted from one unit of measure to another.
+_Measurement_ objects of the same dimension can be converted from one unit of measure to another.
 
-	use Measurements\Measurement;
-	use Measurements\Units\UnitLength;
+``` php
+use Measurements\Measurement;
+use Measurements\Units\UnitLength;
 
-	$meters = new Measurement(4.48, UnitLength::meters());
+$meters = new Measurement(4.48, UnitLength::meters());
 
-	$centimeters = $meters.convertTo(UnitLength::centimeters());
-	echo $centimeters; // would print: 448 cm
+$centimeters = $meters.convertTo(UnitLength::centimeters());
+echo $centimeters; // = 448 cm
+```
+
 
 ### Making Arithmetic Operations
 
-`Measurement` objects support different operations, including `add` (`+`), `subtract` (`-`), `multiply` (`*`) and `divide` (`/`):
+_Measurement_ objects support different operations, including `add` (`+`), `subtract` (`-`), `multiply` (`*`) and `divide` (`/`).
+Since _Measurement_ objects are immutable, new instances are returned.
 
-	use Measurements\Measurement;
-	use Measurements\Units\UnitLength;
+``` php
+use Measurements\Measurement;
+use Measurements\Units\UnitLength;
 
-	$first = new Measurement(4.48, UnitLength::meters());
-	$second = new Measurement(2.02, UnitLength::meters());
-	
-	$sum = $first.add($second);
-	echo $sum; // would print: 6.5 m
-	
-	$difference = $first.subtract($second);
-	echo $difference; // would print: 2.46 m
-	
-	$multiplication = $first.multiply($second);
-	echo $multiplication; // would print: 9.0496 m
-	
-	$division = $first.divide($second);
-	echo $division; // would print: 2.2178217822 m
+$first = new Measurement(4.48, UnitLength::meters());
+$second = new Measurement(2.02, UnitLength::meters());
+
+echo $first->add($second); // = 6.5 m
+
+echo $first->subtract($second); // = 2.46 m
+
+echo $first->multiplyBy($second); // = 9.0496 m
+
+echo $first->divideBy($second); // = 2.2178217822 m
+```
+
 
 Conversions are automatically applied while making operations on measurements with different units. The returned measurement is defined in the base unit. 
 
-	use Measurements\Measurement;
-	use Measurements\Units\UnitLength;
+``` php
+use Measurements\Measurement;
+use Measurements\Units\UnitLength;
 
-	$first = new Measurement(44.8, UnitLength::decimeters());
-	$second = new Measurement(202, UnitLength::centimeters());
-	
-	$sum = $first.add($second);
-	echo $sum; // would print: 6.5 m
+$decimeters = new Measurement(44.8, UnitLength::decimeters());
+$centimeters = new Measurement(202, UnitLength::centimeters());
+
+echo $decimeters->add($centimeters); // = 6.5 m
+
+echo $decimeters->subtract($centimeters); // = 2.46 m
+
+echo $decimeters->multiplyBy($centimeters); // = 9.0496 m
+
+echo $decimeters->divideBy($centimeters); // = 2.2178217822 m
+```
+
+
+It is also possible to make arithmetic operations on a measurement using values.
+
+``` php
+use Measurements\Measurement;
+use Measurements\Units\UnitLength;
+
+$centimeters = new Measurement(42, UnitLength::centimeters());
+
+echo $centimeters->addValue(8); // = 50 cm
+
+echo $centimeters->subtractValue(12); // = 30 cm
+
+echo $centimeters->multiplyByValue(2); // = 84 cm
+
+echo $centimeters->divideByValue(2); // = 21 cm
+```
 
 
 ### Working with Custom Units
@@ -104,55 +144,69 @@ In addition to provided units, you can define custom units. Custom units can be 
 
 #### Initializing a Custom Unit with a Specified Symbol and Definition
 
-The simplest way to define a custom unit is to create a new instance of an existing `Dimension` subclass using the `__construct(symbol:converter:)` constructor method.
+The simplest way to define a custom unit is to create a new instance of an existing `Dimension` subclass.
 
-For example, let define a _jump_ as a custom, nonstandard unit of length (1 jum = 1.82 m). You can create a new instance of `UnitLength` as follows:
+For example, let define a _jump_ as a custom, nonstandard unit of length (1 jump = 1.82 m). You can create a new instance of `UnitLength` as follows:
 
-	$jumps = new UnitLength("jump", new UnitConverterLinear(1.82))
+``` php
+$jump = new UnitLength("jump", new UnitConverterLinear(1.82))
+```
 
-#### Extending Existing `Dimension` Subclasses
+#### Extending Existing Dimension Subclasses
 
 Alternatively, you can extend an existing `Dimension` subclass to define a new unit.
 
-For example, define our new _jump_ unit as custom subclass:
+For example, let define our new _jump_ unit as custom subclass:
 
-	class UnitJump extends UnitLength {
+``` php
+class UnitJump extends UnitLength {
 
-		public static function jumps()
-		{
-			return new static("jump", new UnitConverterLinear(1.82));
-		}
-
+	public static function jumps()
+	{
+		return new static("jump", new UnitConverterLinear(1.82));
 	}
 
-#### Creating a Custom `Dimension` Subclass
+}
+```
+
+
+#### Creating a Custom Dimension Subclass
 
 You can create a new subclass of `Dimension` to describe a new unit dimension.
 
-For example, let define units for radioactivity. The SI unit of measure for radioactivity is the becquerel (Bq), which is defined as the quantity of radioactive material in which one nucleus decays per second (1 Bq = 1 s-1). Radioactivity is also commonly described in terms of curies (Ci), a unit defined relative to the decay of one gram of the radium-226 isotope (1 Ci = 3.7 × 1010 Bq).
+For example, let define units for radioactivity. The SI unit of measure for radioactivity is the becquerel (Bq).
+Radioactivity is also commonly described in terms of curies (Ci), where `1 Ci = 3.7 × 1010 Bq`.
 
 You can implement a `UnitRadioactivity` class that defines both units of radioactivity as follows:
 
-	class UnitRadioactivity extends Dimension {
+``` php
+class UnitRadioactivity extends Dimension {
 
-		public static function becquerel()
-		{
-			return new UnitRadioactivity("Bq", new UnitConverterLinear(1.0));
-		}
-
-		public static function curie()
-		{
-			return new UnitRadioactivity("Ci", new UnitConverterLinear(3.7E10));
-		}
-		
-		public static function baseUnit()
-		{
-			return static::becquerel();
-		}
-
+	public static function becquerel()
+	{
+		return new UnitRadioactivity("Bq", new UnitConverterLinear(1.0));
 	}
 
-## Generating Documentation
+	public static function curie()
+	{
+		return new UnitRadioactivity("Ci", new UnitConverterLinear(3.7E10));
+	}
+	
+	public static function baseUnit()
+	{
+		return static::becquerel();
+	}
+
+}
+```
+
+
+## Generating API Documentation
 
 	$ phpdoc -d ./src/ -t ./doc/generated --template="xml"
-	$ phpdocmd doc/generated/structure.xml doc/
+	$ phpdocmd ./doc/generated/structure.xml doc/
+
+
+## License
+
+This library is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

@@ -1,3 +1,15 @@
-.idea
-doc/generated
+# Editors and IDEs
+/.idea/
+*.sublime-workspace
+*.sublime-project
 
+# OS files
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Project files
+/composer.phar
+/composer.lock
+/vendor/
+doc/generated
