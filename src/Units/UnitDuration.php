@@ -4,10 +4,23 @@ use Measurements\Dimension;
 use Measurements\Converters\UnitConverterLinear;
 
 /**
+ * The `UnitDuration` class encapsulates units of measure for duration of time.
+ * You typically use instances of `UnitDuration` to represent specific quantities of planar angle using the `Measurement` class.
+ *
  * Duration is a quantity of time.
  * The SI unit for time and `UnitDuration` base unit is the second (sec). Duration is also commonly expressed in terms of minutes (min) and hours (hr).
  */
 class UnitDuration extends Dimension {
+
+	/**
+	 * Returns the base unit of duration, equal to seconds.
+	 *
+	 * @return UnitDuration The the base unit of duration.
+	 */
+	public static function baseUnit()
+	{
+		return self::seconds();
+	}
 
 	/**
 	 * Returns the second unit of duration.
@@ -37,16 +50,6 @@ class UnitDuration extends Dimension {
 	public static function hours(): UnitDuration
 	{
 		return new static("hr", new UnitConverterLinear(3600));
-	}
-
-	/**
-	 * Returns the base unit of duration, equal to seconds.
-	 *
-	 * @return UnitDuration The the base unit of duration.
-	 */
-	public static function baseUnit()
-	{
-		return self::seconds();
 	}
 
 }

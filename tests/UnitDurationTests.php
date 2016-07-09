@@ -15,15 +15,15 @@ class UnitDurationTests extends PHPUnit_Framework_TestCase {
 	/** @test */
 	public function it_converts_lengths()
 	{
-		$baseUnit = new Measurement(3600, UnitDuration::seconds());
+		$base = new Measurement(3600, UnitDuration::baseUnit());
 
-		$seconds = $baseUnit->convertTo(UnitDuration::seconds());
-		$minutes = $baseUnit->convertTo(UnitDuration::minutes());
-		$hours = $baseUnit->convertTo(UnitDuration::hours());
+		$seconds = $base->convertTo(UnitDuration::seconds());
+		$minutes = $base->convertTo(UnitDuration::minutes());
+		$hours = $base->convertTo(UnitDuration::hours());
 
-		$this->assertTrue($seconds->value() == 3600, "3600 sec converted to seconds should be equal to 3600 sec instead of {$seconds}.");
-		$this->assertTrue($minutes->value() == 60, "3600 sec converted to seconds should be equal to 60 min instead of {$minutes}.");
-		$this->assertTrue($hours->value() == 1, "3600 sec converted to seconds should be equal to 1 hr instead of {$hours}.");
+		$this->assertTrue($seconds->value() == 3600, "{$base} converted to seconds should be equal to 3600 sec instead of {$seconds}.");
+		$this->assertTrue($minutes->value() == 60, "{$base} converted to seconds should be equal to 60 min instead of {$minutes}.");
+		$this->assertTrue($hours->value() == 1, "{$base} sec converted to seconds should be equal to 1 hr instead of {$hours}.");
 	}
 
 }

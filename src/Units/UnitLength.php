@@ -4,10 +4,24 @@ use Measurements\Dimension;
 use Measurements\Converters\UnitConverterLinear;
 
 /**
+ * The `UnitLength` class encapsulates units of measure for length.
+ * You typically use instances of `UnitLength` to represent specific quantities of length using the `Measurement` class.
+ *
  * Length is the dimensional extent of matter. The SI unit for length is the meter (m), which is defined in terms of the distance traveled by light in a vacuum.
+ * 
  * The base unit of `UnitLength` is defined as meters.
  */
 class UnitLength extends Dimension {
+
+	/**
+	 * Returns the base unit of duration, equal to seconds.
+	 *
+	 * @return UnitLength The the base unit of duration.
+	 */
+	public static function baseUnit()
+	{
+		return self::meters();
+	}
 
 	/**
 	 * Returns the megameters unit of length.
@@ -177,16 +191,6 @@ class UnitLength extends Dimension {
 	public static function nauticalMiles(): UnitLength
 	{
 		return new static("NM", new UnitConverterLinear(1852.0));
-	}
-
-	/**
-	 * Returns the base unit of duration, equal to seconds.
-	 *
-	 * @return UnitLength The the base unit of duration.
-	 */
-	public static function baseUnit()
-	{
-		return self::meters();
 	}
 
 }
