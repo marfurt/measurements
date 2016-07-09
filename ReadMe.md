@@ -42,8 +42,10 @@ The library provides concrete subclasses for many of the most common types of ph
 
 | Dimension Subclass | Description | Base Unit |
 | ------------------ | ----------- | --------- |
+| UnitAcceleration   | Unit of measure for acceleration | meters per second squared `m/s²` |
 | UnitDuration       | Unit of measure for duration | seconds `sec` |
 | UnitLength         | Unit of measure for length | meters `m` |
+| UnitMass           | Unit of measure for mass | kilograms `kg` |
 
 
 ## Usage

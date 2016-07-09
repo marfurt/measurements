@@ -14,9 +14,9 @@ use Measurements\Converters\UnitConverterLinear;
 class UnitLength extends Dimension {
 
 	/**
-	 * Returns the base unit of duration, equal to seconds.
+	 * Returns the base unit of length, equal to seconds.
 	 *
-	 * @return UnitLength The the base unit of duration.
+	 * @return UnitLength The base unit of length.
 	 */
 	public static function baseUnit()
 	{
