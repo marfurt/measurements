@@ -107,7 +107,9 @@ $invalid = new Length(4.48, UnitDuration::hours()); // Will throw a UnitExceptio
 The provided Quantities also serve as "static proxies", providing the benefit of an expressive syntax to create measurements.
 
 ``` php
+use Measurements\Units\UnitLength;
 use Measurements\Quantities\Length;
+use Measurements\Units\UnitDuration;
 use Measurements\Quantities\Duration;
 
 $length = Length::meters(4.48);
