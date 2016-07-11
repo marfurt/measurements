@@ -13,14 +13,8 @@ The package can be installed via [Composer](https://getcomposer.org):
 	$ composer require nmarfurt/measurements
 
 
-## Available Classes
+## Library Classes
 
-### Measurement
-
-A `Measurement` object represents a measured quantity, using a unit of measure and a value. The `Measurement` class provides a programmatic interface to converting measurements into different units, as well as calculating the sum or difference between two measurements.
-
-`Measurement` objects are initialized with a `Unit` object and double value. They are immutable and cannot be changed after being created.
- 
 ### Unit
 
 `Unit` is the abstract superclass of units. Each instance of an `Unit` subclass consists of a symbol, which can be used to create string representations of `Measurement` objects.
@@ -28,42 +22,53 @@ A `Measurement` object represents a measured quantity, using a unit of measure a
 ### Dimension
 
 `Dimension` is an abstract subclass of `Unit` that represents unit families or a dimensional unit of measure, which can be converted into different units of the same type.
-Each instance of an `Dimension`  subclass has a converter, which is used to represent the unit in terms of the dimension’s base unit provided by the `baseUnit()` method.
+Each instance of an `Dimension`  subclass has a converter, which is used to represent the unit in terms of the dimension's base unit provided by the `baseUnit()` method.
 
-> Subclassing notes: `Dimension` is intended for subclassing. If you need a custom unit type to represent a derived unit, or if you need to represent dimensionless units, subclass `Unit` directly.
+> The library provides concrete subclasses for many of the most common types of physical units (listed below).
+> If you need a custom unit type to represent a custom or derived unit, you can subclass `Dimension`. If you need to represent dimensionless units, subclass `Unit` directly.
+
 
 ### UnitConverter
 
 A `UnitConverter` describes how to convert a unit to and from the base unit of its dimension. `UnitConverterLinear` is a `UnitConverter` subclass for converting between units using a linear equation. You can define your own converters if needed.
 
+### Measurement
 
-## Available Units
+A `Measurement` object represents a measured quantity, using a unit of measure and a value. The `Measurement` class provides a programmatic interface to converting measurements into different units, as well as calculating the sum or difference between two measurements.
+
+`Measurement` objects are initialized with a `Unit` object and double value. They are immutable and cannot be changed after being created.
+
+> The library provides specific subclasses for measurements that correspond to the provided units (see the list below).
+ 
+
+## Provided Units & Quantities
 
 The library provides concrete subclasses for many of the most common types of physical units:
 
-| Dimension Subclass | Description | Base Unit |
-| ------------------ | ----------- | --------- |
-| UnitAcceleration |  Unit of measure for acceleration | meters per second squared `m/s²`
-| UnitAngle | Unit of measure for planar angle and rotation | degrees `°`
-| UnitArea | Unit of measure for area | square meters `m²`
-| UnitConcentrationMass | Unit of measure for concentration of mass | milligrams per deciliter `mg/dL`
-| UnitDispersion | Unit of measure for dispersion | parts per million `ppm`
-| UnitDuration | Unit of measure for duration | seconds `sec`
-| UnitElectricCharge | Unit of measure for electric charge | coulombs `C`
-| UnitElectricCurrent | Unit of measure for electric current | amperes `A`
-| UnitElectricPotentialDifference | Unit of measure for electric potential difference | volts `V`
-| UnitElectricResistance | Unit of measure for electric resistance | ohms `Ω`
-| UnitEnergy | Unit of measure for energy | joules `J`
-| UnitFrequency | Unit of measure for frequency | hertz `Hz`
-| UnitFuelEfficiency | Unit of measure for fuel consumption | liters per 100 kilometers `L/100km`
-| UnitIlluminance | Unit of measure for illuminance | lux `x`
-| UnitLength | Unit of measure for length | meters `m`
-| UnitMass | Unit of measure for mass | kilograms `kg`
-| UnitPower | Unit of measure for power | watts `W`
-| UnitPressure | Unit of measure for pressure | newtons per square meter `N/m²`
-| UnitSpeed | Unit of measure for speed | meters per second `m/s`
-| UnitTemperature | Unit of measure for temperature | kelvin `K`
-| UnitVolume | Unit of measure for volume | liters `L`
+| Dimension Subclass | Description | Base Unit | Measurement Subclass |
+| ------------------ | ----------- | --------- | -------------------- |
+| UnitAcceleration |  Unit of measure for acceleration | meters per second squared `m/s²` | Acceleration
+| UnitAngle | Unit of measure for planar angle and rotation | degrees `°` | Angle
+| UnitArea | Unit of measure for area | square meters `m²` | Area
+| UnitConcentrationMass | Unit of measure for concentration of mass | milligrams per deciliter `mg/dL` | ConcentrationMass
+| UnitDispersion | Unit of measure for dispersion | parts per million `ppm` | Dispersion
+| UnitDuration | Unit of measure for duration | seconds `sec` | Duration
+| UnitElectricCharge | Unit of measure for electric charge | coulombs `C` | ElectricCharge
+| UnitElectricCurrent | Unit of measure for electric current | amperes `A` | ElectricCurrent
+| UnitElectricPotentialDifference | Unit of measure for electric potential difference | volts `V` | ElectricPotentialDifference
+| UnitElectricResistance | Unit of measure for electric resistance | ohms `Ω` | ElectricResistance
+| UnitEnergy | Unit of measure for energy | joules `J` | Energy
+| UnitFrequency | Unit of measure for frequency | hertz `Hz` | Frequency
+| UnitFuelEfficiency | Unit of measure for fuel consumption | liters per 100 kilometers `L/100km` | FuelEfficiency
+| UnitIlluminance | Unit of measure for illuminance | lux `lx` | Illuminance
+| UnitLength | Unit of measure for length | meters `m` | Length
+| UnitMass | Unit of measure for mass | kilograms `kg` | Mass
+| UnitPower | Unit of measure for power | watts `W`| Power
+| UnitPressure | Unit of measure for pressure | newtons per square meter `N/m²`| Pressure
+| UnitRadioactivity | Unit of measure for radioactivity | becquerel `Bq`| Radioactivity
+| UnitSpeed | Unit of measure for speed | meters per second `m/s`| Speed
+| UnitTemperature | Unit of measure for temperature | kelvin `K`| Temperature
+| UnitVolume | Unit of measure for volume | liters `L`| Volume
 
 
 ## Usage
@@ -84,6 +89,37 @@ $duration = new Measurement(1.5, UnitDuration::hours());
 echo $duration; // = 1.5 hr
 ```
 
+You may want to enforce the unit type of a measurement by using the provided measurement subclasses (_aka_ _Quantities_):
+
+``` php
+use Measurements\Quantities\Length;
+use Measurements\Quantities\Duration;
+
+$length = new Length(4.48, UnitLength::meters());
+echo $length; // = 4.48 m
+
+$duration = new Duration(1.5, UnitDuration::hours());
+echo $duration; // = 1.5 hr
+
+$invalid = new Length(4.48, UnitDuration::hours()); // Will throw a UnitException exception
+```
+
+The provided Quantities also serve as "static proxies", providing the benefit of an expressive syntax to create measurements.
+
+``` php
+use Measurements\Quantities\Length;
+use Measurements\Quantities\Duration;
+
+$length = Length::meters(4.48);
+echo $length; // = 4.48 m
+
+$duration = Duration::hours(1.5);
+echo $duration; // = 1.5 hr
+
+$invalid = Length::hours(4.48); // Will throw a BadMethodCallException exception
+```
+
+
 ### Converting Measurements
 
 _Measurement_ objects of the same dimension can be converted from one unit of measure to another.
@@ -94,7 +130,7 @@ use Measurements\Units\UnitLength;
 
 $meters = new Measurement(4.48, UnitLength::meters());
 
-$centimeters = $meters.convertTo(UnitLength::centimeters());
+$centimeters = $meters->convertTo(UnitLength::centimeters());
 echo $centimeters; // = 448 cm
 ```
 
@@ -169,7 +205,7 @@ The simplest way to define a custom unit is to create a new instance of an exist
 For example, let define a _jump_ as a custom, nonstandard unit of length (1 jump = 1.82 m). You can create a new instance of `UnitLength` as follows:
 
 ``` php
-$jump = new UnitLength("jump", new UnitConverterLinear(1.82))
+$jump = new UnitLength("jump", new UnitConverterLinear(1.82));
 ```
 
 #### Extending Existing Dimension Subclasses

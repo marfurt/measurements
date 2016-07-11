@@ -2,9 +2,9 @@
 
 use PHPUnit_Framework_TestCase;
 use Measurements\Measurement;
-use Measurements\UnitException;
 use Measurements\Units\UnitLength;
 use Measurements\Units\UnitDuration;
+use Measurements\Exceptions\UnitException;
 
 class ComparisonTests extends PHPUnit_Framework_TestCase {
 

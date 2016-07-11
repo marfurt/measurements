@@ -6,11 +6,11 @@
 interface Equatable {
 
 	/**
-	 * Check for objects equality.
+	 * Returns a boolean value that indicates whether the receiver is equal to another given object.
 	 *
-	 * @param $other The object to compare to the receiver.
+	 * @param $other The object with which to compare the receiver.
 	 *
-	 * @return bool Return true if both objects are equal, otherwise false.
+	 * @return bool `true` if both objects are equal, otherwise `false`.
 	 */
 	public function isEqualTo($other);
 

@@ -12,7 +12,7 @@ class MeasurementTests extends PHPUnit_Framework_TestCase {
 		$length = new Measurement(42, UnitLength::meters());
 
 		$this->assertNotNull($length);
-		$this->assertTrue($length == '42 m', "Measurement should print <4.48 m>.");
+		$this->assertTrue($length == '42 m', "Measurement should print <42 m>.");
 	}
 
 	/** @test */
@@ -20,7 +20,7 @@ class MeasurementTests extends PHPUnit_Framework_TestCase {
 	{
 		$length = new Measurement(42, UnitLength::meters());
 
-		$this->assertTrue($length->value() == 42, "Measurement value should be 4.48.");
+		$this->assertTrue($length->value() == 42, "Measurement value should be 42.");
 	}
 
 	/** @test */
@@ -52,4 +52,5 @@ class MeasurementTests extends PHPUnit_Framework_TestCase {
 		$this->assertTrue($meters->isEqualTo($centimeters), "Measurements should be equal.");
 		$this->assertFalse($meters->isEqualTo($other), "Measurements should not be equal.");
 	}
+
 }
