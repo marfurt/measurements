@@ -1,4 +1,4 @@
-<?php namespace Tests;
+<?php namespace Tests\Units;
 
 use PHPUnit_Framework_TestCase;
 use Measurements\Measurement;
@@ -13,7 +13,7 @@ class UnitDurationTests extends PHPUnit_Framework_TestCase {
 	}
 
 	/** @test */
-	public function it_converts_lengths()
+	public function it_converts_durations()
 	{
 		$base = new Measurement(3600, UnitDuration::baseUnit());
 

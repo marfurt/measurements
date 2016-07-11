@@ -17,16 +17,17 @@ The package can be installed via [Composer](https://getcomposer.org):
 
 ### Measurement
 
-A `Measurement` object represents a quantity and unit of measure. The `Measurement` class provides a programmatic interface to converting measurements into different units, as well as calculating the sum or difference between two measurements.
-`Measurement` objects are initialized with a `Unit` object and double value. `Measurement` objects are immutable, and cannot be changed after being created.
+A `Measurement` object represents a measured quantity, using a unit of measure and a value. The `Measurement` class provides a programmatic interface to converting measurements into different units, as well as calculating the sum or difference between two measurements.
+
+`Measurement` objects are initialized with a `Unit` object and double value. They are immutable and cannot be changed after being created.
  
 ### Unit
 
-Each instance of an `Unit` subclass consists of a symbol, which can be used to create string representations of `Measurement` objects.
+`Unit` is the abstract superclass of units. Each instance of an `Unit` subclass consists of a symbol, which can be used to create string representations of `Measurement` objects.
 
 ### Dimension
 
-The `Dimension` subclass is an abstract subclass of `Unit` that represents a dimensional unit of measure, which can be converted into different units of the same type.
+`Dimension` is an abstract subclass of `Unit` that represents unit families or a dimensional unit of measure, which can be converted into different units of the same type.
 Each instance of an `Dimension`  subclass has a converter, which is used to represent the unit in terms of the dimension’s base unit provided by the `baseUnit()` method.
 
 > Subclassing notes: `Dimension` is intended for subclassing. If you need a custom unit type to represent a derived unit, or if you need to represent dimensionless units, subclass `Unit` directly.
@@ -42,10 +43,27 @@ The library provides concrete subclasses for many of the most common types of ph
 
 | Dimension Subclass | Description | Base Unit |
 | ------------------ | ----------- | --------- |
-| UnitAcceleration   | Unit of measure for acceleration | meters per second squared `m/s²` |
-| UnitDuration       | Unit of measure for duration | seconds `sec` |
-| UnitLength         | Unit of measure for length | meters `m` |
-| UnitMass           | Unit of measure for mass | kilograms `kg` |
+| UnitAcceleration |  Unit of measure for acceleration | meters per second squared `m/s²`
+| UnitAngle | Unit of measure for planar angle and rotation | degrees `°`
+| UnitArea | Unit of measure for area | square meters `m²`
+| UnitConcentrationMass | Unit of measure for concentration of mass | milligrams per deciliter `mg/dL`
+| UnitDispersion | Unit of measure for dispersion | parts per million `ppm`
+| UnitDuration | Unit of measure for duration | seconds `sec`
+| UnitElectricCharge | Unit of measure for electric charge | coulombs `C`
+| UnitElectricCurrent | Unit of measure for electric current | amperes `A`
+| UnitElectricPotentialDifference | Unit of measure for electric potential difference | volts `V`
+| UnitElectricResistance | Unit of measure for electric resistance | ohms `Ω`
+| UnitEnergy | Unit of measure for energy | joules `J`
+| UnitFrequency | Unit of measure for frequency | hertz `Hz`
+| UnitFuelEfficiency | Unit of measure for fuel consumption | liters per 100 kilometers `L/100km`
+| UnitIlluminance | Unit of measure for illuminance | lux `x`
+| UnitLength | Unit of measure for length | meters `m`
+| UnitMass | Unit of measure for mass | kilograms `kg`
+| UnitPower | Unit of measure for power | watts `W`
+| UnitPressure | Unit of measure for pressure | newtons per square meter `N/m²`
+| UnitSpeed | Unit of measure for speed | meters per second `m/s`
+| UnitTemperature | Unit of measure for temperature | kelvin `K`
+| UnitVolume | Unit of measure for volume | liters `L`
 
 
 ## Usage
@@ -176,28 +194,45 @@ class UnitJump extends UnitLength {
 
 You can create a new subclass of `Dimension` to describe a new unit dimension.
 
-For example, let define units for radioactivity. The SI unit of measure for radioactivity is the becquerel (Bq).
-Radioactivity is also commonly described in terms of curies (Ci), where `1 Ci = 3.7 × 1010 Bq`.
+For example, let define units for digital data. In computing and telecommunications, a unit of information is the capacity of some standard data storage system or communication channel, used to measure the capacities of other systems and channels.
+Bytes, or multiples thereof, are common units used to specify the sizes of computer files and the capacity of storage units.
 
-You can implement a `UnitRadioactivity` class that defines both units of radioactivity as follows:
+You can implement a `UnitDigitalData` class that defines units of digital information as follows:
 
 ``` php
-class UnitRadioactivity extends Dimension {
+class UnitDigitalData extends Dimension {
 
-	public static function becquerel()
-	{
-		return new UnitRadioactivity("Bq", new UnitConverterLinear(1.0));
-	}
-
-	public static function curie()
-	{
-		return new UnitRadioactivity("Ci", new UnitConverterLinear(3.7E10));
-	}
-	
 	public static function baseUnit()
 	{
-		return static::becquerel();
+		return static::bytes();
 	}
+	
+	public static function bytes()
+	{
+		return new UnitDigitalData("B", new UnitConverterLinear(1.0));
+	}
+
+	public static function kilobytes()
+	{
+		return new UnitDigitalData("kB", new UnitConverterLinear(1000));
+	}
+	
+	public static function megabytes()
+	{
+		return new UnitDigitalData("MB", new UnitConverterLinear(1000000));
+	}
+
+	public static function kibibytes()
+	{
+		return new UnitDigitalData("KiB", new UnitConverterLinear(1024));
+	}
+
+	public static function mebibytes()
+	{
+		return new UnitDigitalData("MiB", new UnitConverterLinear(1048576));
+	}
+	
+	// ...
 
 }
 ```

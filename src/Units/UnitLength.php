@@ -7,7 +7,8 @@ use Measurements\Converters\UnitConverterLinear;
  * The `UnitLength` class encapsulates units of measure for length.
  * You typically use instances of `UnitLength` to represent specific quantities of length using the `Measurement` class.
  *
- * Length is the dimensional extent of matter. The SI unit for length is the meter (m), which is defined in terms of the distance traveled by light in a vacuum.
+ * Length is the dimensional extent of matter.
+ * The SI unit for length is the meter (m), which is defined in terms of the distance traveled by light in a vacuum.
  * 
  * The base unit of `UnitLength` is defined as meters.
  */

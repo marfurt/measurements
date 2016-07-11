@@ -1,4 +1,4 @@
-<?php namespace Tests;
+<?php namespace Tests\Units;
 
 use PHPUnit_Framework_TestCase;
 use Measurements\Measurement;

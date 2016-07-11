@@ -38,7 +38,7 @@ abstract class Unit implements Equatable {
 			return false;
 		}
 
-		return $this->symbol() == $other->symbol();
+		return $this == $other;
 	}
 
 	public function __toString()

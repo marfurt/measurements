@@ -4,7 +4,7 @@
  * A `Measurement` object represents a quantity and unit of measure.
  * The `Measurement` class provides a programmatic interface to converting measurements into different units, as well as calculating the sum or difference between two measurements.
  */
-final class Measurement implements Comparable {
+class Measurement implements Comparable {
 
 	/**
 	 * The value component of the measurement.

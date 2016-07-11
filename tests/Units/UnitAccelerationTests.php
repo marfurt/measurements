@@ -1,4 +1,4 @@
-<?php namespace Tests;
+<?php namespace Tests\Units;
 
 use PHPUnit_Framework_TestCase;
 use Measurements\Measurement;
@@ -13,7 +13,7 @@ class UnitAccelerationTests extends PHPUnit_Framework_TestCase {
 	}
 
 	/** @test */
-	public function it_converts_lengths()
+	public function it_converts_accelerations()
 	{
 		$base = new Measurement(1, UnitAcceleration::baseUnit());
 
