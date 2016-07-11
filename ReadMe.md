@@ -1,8 +1,8 @@
 # Measurements & Units
 
 [![Build Status](https://travis-ci.org/marfurt/measurements.svg?branch=master)](https://travis-ci.org/marfurt/measurements)
-[![Latest Stable Version](https://poser.pugx.org/marfurt/measurements/v/stable)](https://packagist.org/packages/nmarfurt/measurements)
-[![License](https://poser.pugx.org/marfurt/measurements/license)](https://packagist.org/packages/nmarfurt/measurements)
+[![Latest Stable Version](https://poser.pugx.org/nmarfurt/measurements/v/stable)](https://packagist.org/packages/nmarfurt/measurements)
+[![License](https://poser.pugx.org/nmarfurt/measurements/license)](https://packagist.org/packages/nmarfurt/measurements)
 
 
 ## About
