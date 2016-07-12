@@ -14,6 +14,10 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitDispersion extends Dimension {
 
+	const SYMBOL_PARTS_PER_MILLION = "ppm";
+
+	const COEFFICIENT_PARTS_PER_MILLION = 1.0;
+
 	/**
 	 * Returns the base dispersion unit, equal to parts per million.
 	 *
@@ -31,7 +35,7 @@ class UnitDispersion extends Dimension {
 	 */
 	public static function partsPerMillion(): UnitDispersion
 	{
-		return new static("ppm", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_PARTS_PER_MILLION, new UnitConverterLinear(static::COEFFICIENT_PARTS_PER_MILLION));
 	}
 
 }

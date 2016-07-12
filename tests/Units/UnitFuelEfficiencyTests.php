@@ -6,6 +6,8 @@ use Measurements\Units\UnitFuelEfficiency;
 
 class UnitFuelEfficiencyTests extends PHPUnit_Framework_TestCase {
 
+	use InteractsWithUnits;
+
 	/** @test */
 	public function it_defines_liters_per_100_kilometers_as_base_unit()
 	{
@@ -17,13 +19,9 @@ class UnitFuelEfficiencyTests extends PHPUnit_Framework_TestCase {
 	{
 		$base = new Measurement(1, UnitFuelEfficiency::baseUnit());
 
-		$litersPer100Kilometers = $base->convertTo(UnitFuelEfficiency::litersPer100Kilometers());
-		$milesPerGallon = $base->convertTo(UnitFuelEfficiency::milesPerGallon());
-		$milesPerImperialGallon = $base->convertTo(UnitFuelEfficiency::milesPerImperialGallon());
-
-		$this->assertTrue($litersPer100Kilometers->value() == 1.0, "{$base} converted to liters per 100 kilometers should be equal to 1 L/100km instead of {$litersPer100Kilometers}.");
-		$this->assertTrue($milesPerGallon->value() == 1.0 / 235.215, "{$base} converted to miles per gallon should be equal to 0.004251429543 US mpg instead of {$milesPerGallon}.");
-		$this->assertTrue($milesPerImperialGallon->value() == 1.0 / 282.481, "{$base} converted to miles per imperial gallon should be equal to 0.003540061101 Imp mpg instead of {$milesPerImperialGallon}.");
+		$this->assertMeasurementEquals($base->convertTo(UnitFuelEfficiency::litersPer100Kilometers()), 1.0, $base, "liters per 100 kilometers");
+		$this->assertMeasurementEquals($base->convertTo(UnitFuelEfficiency::milesPerGallon()), 235.215, $base, "miles per gallon");
+		$this->assertMeasurementEquals($base->convertTo(UnitFuelEfficiency::milesPerImperialGallon()), 282.481, $base, "miles per imperial gallon");
 	}
 
 }

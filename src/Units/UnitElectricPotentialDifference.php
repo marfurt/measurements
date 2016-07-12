@@ -14,6 +14,18 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitElectricPotentialDifference extends Dimension {
 
+	const SYMBOL_MEGAVOLTS = "MV";
+	const SYMBOL_KILOVOLTS = "kV";
+	const SYMBOL_VOLTS = "V";
+	const SYMBOL_MILLIVOLTS = "mV";
+	const SYMBOL_MICROVOLTS = "µV";
+
+	const COEFFICIENT_MEGAVOLTS = 1E+6;
+	const COEFFICIENT_KILOVOLTS = 1000.0;
+	const COEFFICIENT_VOLTS = 1.0;
+	const COEFFICIENT_MILLIVOLTS = 0.001;
+	const COEFFICIENT_MICROVOLTS = 1E-6;
+
 	/**
 	 * Returns the base unit of electric potential difference, equal to volts.
 	 *
@@ -31,7 +43,7 @@ class UnitElectricPotentialDifference extends Dimension {
 	 */
 	public static function megavolts(): UnitElectricPotentialDifference
 	{
-		return new static("MV", new UnitConverterLinear(1000000.0));
+		return new static(static::SYMBOL_MEGAVOLTS, new UnitConverterLinear(static::COEFFICIENT_MEGAVOLTS));
 	}
 
 	/**
@@ -41,7 +53,7 @@ class UnitElectricPotentialDifference extends Dimension {
 	 */
 	public static function kilovolts(): UnitElectricPotentialDifference
 	{
-		return new static("kV", new UnitConverterLinear(1000.0));
+		return new static(static::SYMBOL_KILOVOLTS, new UnitConverterLinear(static::COEFFICIENT_KILOVOLTS));
 	}
 
 	/**
@@ -51,7 +63,7 @@ class UnitElectricPotentialDifference extends Dimension {
 	 */
 	public static function volts(): UnitElectricPotentialDifference
 	{
-		return new static("V", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_VOLTS, new UnitConverterLinear(static::COEFFICIENT_VOLTS));
 	}
 
 	/**
@@ -61,7 +73,7 @@ class UnitElectricPotentialDifference extends Dimension {
 	 */
 	public static function millivolts(): UnitElectricPotentialDifference
 	{
-		return new static("mV", new UnitConverterLinear(0.001));
+		return new static(static::SYMBOL_MILLIVOLTS, new UnitConverterLinear(static::COEFFICIENT_MILLIVOLTS));
 	}
 
 	/**
@@ -71,7 +83,7 @@ class UnitElectricPotentialDifference extends Dimension {
 	 */
 	public static function microvolts(): UnitElectricPotentialDifference
 	{
-		return new static("µV", new UnitConverterLinear(0.000001));
+		return new static(static::SYMBOL_MICROVOLTS, new UnitConverterLinear(static::COEFFICIENT_MICROVOLTS));
 	}
 
 }

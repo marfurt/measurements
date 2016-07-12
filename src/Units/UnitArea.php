@@ -14,6 +14,36 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitArea extends Dimension {
 
+	const SYMBOL_SQUARE_MEGAMETERS = "Mm²";
+	const SYMBOL_SQUARE_KILOMETERS = "km²";
+	const SYMBOL_SQUARE_METERS = "m²";
+	const SYMBOL_SQUARE_CENTIMETERS = "cm²";
+	const SYMBOL_SQUARE_MILLIMETERS = "mm²";
+	const SYMBOL_SQUARE_MICROMETERS = "µm²";
+	const SYMBOL_SQUARE_NANOMETERS = "nm²";
+	const SYMBOL_SQUARE_INCHES = "in²";
+	const SYMBOL_SQUARE_FEET = "ft²";
+	const SYMBOL_SQUARE_YARDS = "yd²";
+	const SYMBOL_SQUARE_MILES = "mi²";
+	const SYMBOL_SQUARE_ACRES = "ac";
+	const SYMBOL_SQUARE_ARES = "a";
+	const SYMBOL_SQUARE_HECTARES = "ha";
+
+	const COEFFICIENT_SQUARE_MEGAMETERS = 1E+12;
+	const COEFFICIENT_SQUARE_KILOMETERS = 1E+6;
+	const COEFFICIENT_SQUARE_METERS = 1.0;
+	const COEFFICIENT_SQUARE_CENTIMETERS = 1E-4;
+	const COEFFICIENT_SQUARE_MILLIMETERS = 1E-6;
+	const COEFFICIENT_SQUARE_MICROMETERS = 1E-12;
+	const COEFFICIENT_SQUARE_NANOMETERS = 1E-18;
+	const COEFFICIENT_SQUARE_INCHES = 0.00064516;
+	const COEFFICIENT_SQUARE_FEET = 0.092903;
+	const COEFFICIENT_SQUARE_YARDS = 0.836127;
+	const COEFFICIENT_SQUARE_MILES = 2.59E+6;
+	const COEFFICIENT_SQUARE_ACRES = 4046.86;
+	const COEFFICIENT_SQUARE_ARES = 100.0;
+	const COEFFICIENT_SQUARE_HECTARES = 10000.0;
+
 	/**
 	 * Returns the base unit of area, equal to square meters.
 	 *
@@ -31,7 +61,7 @@ class UnitArea extends Dimension {
 	 */
 	public static function squareMegameters(): UnitArea
 	{
-		return new static("Mm²", new UnitConverterLinear(1E+12));
+		return new static(static::SYMBOL_SQUARE_MEGAMETERS, new UnitConverterLinear(static::COEFFICIENT_SQUARE_MEGAMETERS));
 	}
 
 	/**
@@ -41,7 +71,7 @@ class UnitArea extends Dimension {
 	 */
 	public static function squareKilometers(): UnitArea
 	{
-		return new static("km²", new UnitConverterLinear(1000000.0));
+		return new static(static::SYMBOL_SQUARE_KILOMETERS, new UnitConverterLinear(static::COEFFICIENT_SQUARE_KILOMETERS));
 	}
 
 	/**
@@ -51,7 +81,7 @@ class UnitArea extends Dimension {
 	 */
 	public static function squareMeters(): UnitArea
 	{
-		return new static("m²", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_SQUARE_METERS, new UnitConverterLinear(static::COEFFICIENT_SQUARE_METERS));
 	}
 
 	/**
@@ -61,7 +91,7 @@ class UnitArea extends Dimension {
 	 */
 	public static function squareCentimeters(): UnitArea
 	{
-		return new static("cm²", new UnitConverterLinear(0.0001));
+		return new static(static::SYMBOL_SQUARE_CENTIMETERS, new UnitConverterLinear(static::COEFFICIENT_SQUARE_CENTIMETERS));
 	}
 
 	/**
@@ -71,7 +101,7 @@ class UnitArea extends Dimension {
 	 */
 	public static function squareMillimeters(): UnitArea
 	{
-		return new static("mm²", new UnitConverterLinear(0.000001));
+		return new static(static::SYMBOL_SQUARE_MILLIMETERS, new UnitConverterLinear(static::COEFFICIENT_SQUARE_MILLIMETERS));
 	}
 
 	/**
@@ -81,7 +111,7 @@ class UnitArea extends Dimension {
 	 */
 	public static function squareMicrometers(): UnitArea
 	{
-		return new static("µm²", new UnitConverterLinear(1E-12));
+		return new static(static::SYMBOL_SQUARE_MICROMETERS, new UnitConverterLinear(static::COEFFICIENT_SQUARE_MICROMETERS));
 	}
 
 	/**
@@ -91,7 +121,7 @@ class UnitArea extends Dimension {
 	 */
 	public static function squareNanometers(): UnitArea
 	{
-		return new static("nm²", new UnitConverterLinear(1E-18));
+		return new static(static::SYMBOL_SQUARE_NANOMETERS, new UnitConverterLinear(static::COEFFICIENT_SQUARE_NANOMETERS));
 	}
 
 	/**
@@ -101,7 +131,7 @@ class UnitArea extends Dimension {
 	 */
 	public static function squareInches(): UnitArea
 	{
-		return new static("in²", new UnitConverterLinear(0.00064516));
+		return new static(static::SYMBOL_SQUARE_INCHES, new UnitConverterLinear(static::COEFFICIENT_SQUARE_INCHES));
 	}
 
 	/**
@@ -111,7 +141,7 @@ class UnitArea extends Dimension {
 	 */
 	public static function squareFeet(): UnitArea
 	{
-		return new static("ft²", new UnitConverterLinear(0.092903));
+		return new static(static::SYMBOL_SQUARE_FEET, new UnitConverterLinear(static::COEFFICIENT_SQUARE_FEET));
 	}
 
 	/**
@@ -121,7 +151,7 @@ class UnitArea extends Dimension {
 	 */
 	public static function squareYards(): UnitArea
 	{
-		return new static("yd²", new UnitConverterLinear(0.836127));
+		return new static(static::SYMBOL_SQUARE_YARDS, new UnitConverterLinear(static::COEFFICIENT_SQUARE_YARDS));
 	}
 
 	/**
@@ -131,7 +161,7 @@ class UnitArea extends Dimension {
 	 */
 	public static function squareMiles(): UnitArea
 	{
-		return new static("mi²", new UnitConverterLinear(2.59E+6));
+		return new static(static::SYMBOL_SQUARE_MILES, new UnitConverterLinear(static::COEFFICIENT_SQUARE_MILES));
 	}
 
 	/**
@@ -141,7 +171,7 @@ class UnitArea extends Dimension {
 	 */
 	public static function acres(): UnitArea
 	{
-		return new static("ac", new UnitConverterLinear(4046.86));
+		return new static(static::SYMBOL_SQUARE_ACRES, new UnitConverterLinear(static::COEFFICIENT_SQUARE_ACRES));
 	}
 
 	/**
@@ -151,7 +181,7 @@ class UnitArea extends Dimension {
 	 */
 	public static function ares(): UnitArea
 	{
-		return new static("a", new UnitConverterLinear(100));
+		return new static(static::SYMBOL_SQUARE_ARES, new UnitConverterLinear(static::COEFFICIENT_SQUARE_ARES));
 	}
 
 	/**
@@ -161,7 +191,7 @@ class UnitArea extends Dimension {
 	 */
 	public static function hectares(): UnitArea
 	{
-		return new static("ha", new UnitConverterLinear(10000));
+		return new static(static::SYMBOL_SQUARE_HECTARES, new UnitConverterLinear(static::COEFFICIENT_SQUARE_HECTARES));
 	}
 
 }

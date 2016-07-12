@@ -13,6 +13,12 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitAcceleration extends Dimension {
 
+	const SYMBOL_METERS_PER_SECONDS_SQUARED = "m/s²";
+	const SYMBOL_GRAVITY = "g";
+
+	const COEFFICIENT_METERS_PER_SECONDS_SQUARED = 1.0;
+	const COEFFICIENT_GRAVITY = 9.81;
+
 	/**
 	 * Returns the base acceleration unit, equal to metersPerSecondSquared.
 	 *
@@ -30,7 +36,7 @@ class UnitAcceleration extends Dimension {
 	 */
 	public static function metersPerSecondSquared(): UnitAcceleration
 	{
-		return new static("m/s²", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_METERS_PER_SECONDS_SQUARED, new UnitConverterLinear(static::COEFFICIENT_METERS_PER_SECONDS_SQUARED));
 	}
 
 	/**
@@ -40,7 +46,7 @@ class UnitAcceleration extends Dimension {
 	 */
 	public static function gravity(): UnitAcceleration
 	{
-		return new static("g", new UnitConverterLinear(9.81));
+		return new static(static::SYMBOL_GRAVITY, new UnitConverterLinear(static::COEFFICIENT_GRAVITY));
 	}
 
 }

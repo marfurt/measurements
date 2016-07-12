@@ -14,6 +14,40 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitMass extends Dimension {
 
+	const SYMBOL_KILOGRAMS = "kg";
+	const SYMBOL_GRAMS = "g";
+	const SYMBOL_DECIGRAMS = "dg";
+	const SYMBOL_CENTIGRAMS = "cg";
+	const SYMBOL_MILLIGRAMS = "mg";
+	const SYMBOL_MICROGRAMS = "µg";
+	const SYMBOL_NANOGRAMS = "ng";
+	const SYMBOL_PICOGRAMS = "pg";
+	const SYMBOL_OUNCES = "oz";
+	const SYMBOL_OUNCES_TROY = "oz t";
+	const SYMBOL_POUNDS = "lb";
+	const SYMBOL_STONES = "st";
+	const SYMBOL_METRIC_TONS = "t";
+	const SYMBOL_SHORT_TONS = "ton";
+	const SYMBOL_CARATS = "ct";
+	const SYMBOL_SLUGS = "sg";
+
+	const COEFFICIENT_KILOGRAMS = 1.0;
+	const COEFFICIENT_GRAMS = 0.001;
+	const COEFFICIENT_DECIGRAMS = 1E-4;
+	const COEFFICIENT_CENTIGRAMS = 1E-5;
+	const COEFFICIENT_MILLIGRAMS = 1E-6;
+	const COEFFICIENT_MICROGRAMS = 1E-9;
+	const COEFFICIENT_NANOGRAMS = 1E-12;
+	const COEFFICIENT_PICOGRAMS = 1E-15;
+	const COEFFICIENT_OUNCES = 0.0283495;
+	const COEFFICIENT_OUNCES_TROY = 0.03110348;
+	const COEFFICIENT_POUNDS = 0.453592;
+	const COEFFICIENT_STONES = 0.157473;
+	const COEFFICIENT_METRIC_TONS = 1000.0;
+	const COEFFICIENT_SHORT_TONS = 907.185;
+	const COEFFICIENT_CARATS = 0.0002;
+	const COEFFICIENT_SLUGS = 14.5939;
+
 	/**
 	 * Returns the base unit of mass, equal to kilograms.
 	 *
@@ -31,7 +65,7 @@ class UnitMass extends Dimension {
 	 */
 	public static function kilograms(): UnitMass
 	{
-		return new static("kg", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_KILOGRAMS, new UnitConverterLinear(static::COEFFICIENT_KILOGRAMS));
 	}
 
 	/**
@@ -41,7 +75,7 @@ class UnitMass extends Dimension {
 	 */
 	public static function grams(): UnitMass
 	{
-		return new static("g", new UnitConverterLinear(0.001));
+		return new static(static::SYMBOL_GRAMS, new UnitConverterLinear(static::COEFFICIENT_GRAMS));
 	}
 
 	/**
@@ -51,7 +85,7 @@ class UnitMass extends Dimension {
 	 */
 	public static function decigrams(): UnitMass
 	{
-		return new static("dg", new UnitConverterLinear(0.0001));
+		return new static(static::SYMBOL_DECIGRAMS, new UnitConverterLinear(static::COEFFICIENT_DECIGRAMS));
 	}
 
 	/**
@@ -61,7 +95,7 @@ class UnitMass extends Dimension {
 	 */
 	public static function centigrams(): UnitMass
 	{
-		return new static("cg", new UnitConverterLinear(0.00001));
+		return new static(static::SYMBOL_CENTIGRAMS, new UnitConverterLinear(static::COEFFICIENT_CENTIGRAMS));
 	}
 
 	/**
@@ -71,7 +105,7 @@ class UnitMass extends Dimension {
 	 */
 	public static function milligrams(): UnitMass
 	{
-		return new static("mg", new UnitConverterLinear(0.000001));
+		return new static(static::SYMBOL_MILLIGRAMS, new UnitConverterLinear(static::COEFFICIENT_MILLIGRAMS));
 	}
 
 	/**
@@ -81,7 +115,7 @@ class UnitMass extends Dimension {
 	 */
 	public static function micrograms(): UnitMass
 	{
-		return new static("µg", new UnitConverterLinear(1E-9));
+		return new static(static::SYMBOL_MICROGRAMS, new UnitConverterLinear(static::COEFFICIENT_MICROGRAMS));
 	}
 
 	/**
@@ -91,7 +125,7 @@ class UnitMass extends Dimension {
 	 */
 	public static function nanograms(): UnitMass
 	{
-		return new static("ng", new UnitConverterLinear(1E-12));
+		return new static(static::SYMBOL_NANOGRAMS, new UnitConverterLinear(static::COEFFICIENT_NANOGRAMS));
 	}
 
 	/**
@@ -101,7 +135,7 @@ class UnitMass extends Dimension {
 	 */
 	public static function picograms(): UnitMass
 	{
-		return new static("pg", new UnitConverterLinear(1E-15));
+		return new static(static::SYMBOL_PICOGRAMS, new UnitConverterLinear(static::COEFFICIENT_PICOGRAMS));
 	}
 
 	/**
@@ -111,7 +145,17 @@ class UnitMass extends Dimension {
 	 */
 	public static function ounces(): UnitMass
 	{
-		return new static("oz", new UnitConverterLinear(0.0283495));
+		return new static(static::SYMBOL_OUNCES, new UnitConverterLinear(static::COEFFICIENT_OUNCES));
+	}
+
+	/**
+	 * Returns the ounces Troy unit of mass.
+	 *
+	 * @return UnitMass The ounces Troy unit of mass.
+	 */
+	public static function ouncesTroy(): UnitMass
+	{
+		return new static(static::SYMBOL_OUNCES_TROY, new UnitConverterLinear(static::COEFFICIENT_OUNCES_TROY));
 	}
 
 	/**
@@ -121,7 +165,7 @@ class UnitMass extends Dimension {
 	 */
 	public static function pounds(): UnitMass
 	{
-		return new static("lb", new UnitConverterLinear(0.453592));
+		return new static(static::SYMBOL_POUNDS, new UnitConverterLinear(static::COEFFICIENT_POUNDS));
 	}
 
 	/**
@@ -131,7 +175,7 @@ class UnitMass extends Dimension {
 	 */
 	public static function stones(): UnitMass
 	{
-		return new static("st", new UnitConverterLinear(0.157473));
+		return new static(static::SYMBOL_STONES, new UnitConverterLinear(static::COEFFICIENT_STONES));
 	}
 
 	/**
@@ -141,17 +185,17 @@ class UnitMass extends Dimension {
 	 */
 	public static function metricTons(): UnitMass
 	{
-		return new static("t", new UnitConverterLinear(1000));
+		return new static(static::SYMBOL_METRIC_TONS, new UnitConverterLinear(static::COEFFICIENT_METRIC_TONS));
 	}
 
 	/**
-	 * Returns the shortTons unit of mass.
+	 * Returns the short tons unit of mass.
 	 *
-	 * @return UnitMass The shortTons unit of mass.
+	 * @return UnitMass The short tons unit of mass.
 	 */
 	public static function shortTons(): UnitMass
 	{
-		return new static("ton", new UnitConverterLinear(907.185));
+		return new static(static::SYMBOL_SHORT_TONS, new UnitConverterLinear(static::COEFFICIENT_SHORT_TONS));
 	}
 
 	/**
@@ -161,17 +205,7 @@ class UnitMass extends Dimension {
 	 */
 	public static function carats(): UnitMass
 	{
-		return new static("ct", new UnitConverterLinear(0.0002));
-	}
-
-	/**
-	 * Returns the ouncesTroy unit of mass.
-	 *
-	 * @return UnitMass The ouncesTroy unit of mass.
-	 */
-	public static function ouncesTroy(): UnitMass
-	{
-		return new static("oz t", new UnitConverterLinear(0.03110348));
+		return new static(static::SYMBOL_CARATS, new UnitConverterLinear(static::COEFFICIENT_CARATS));
 	}
 
 	/**
@@ -181,7 +215,7 @@ class UnitMass extends Dimension {
 	 */
 	public static function slugs(): UnitMass
 	{
-		return new static("sg", new UnitConverterLinear(14.5939));
+		return new static(static::SYMBOL_SLUGS, new UnitConverterLinear(static::COEFFICIENT_SLUGS));
 	}
 
 }

@@ -6,6 +6,8 @@ use Measurements\Units\UnitDispersion;
 
 class UnitDispersionTests extends PHPUnit_Framework_TestCase {
 
+	use InteractsWithUnits;
+
 	/** @test */
 	public function it_defines_parts_per_million_as_base_unit()
 	{
@@ -17,9 +19,7 @@ class UnitDispersionTests extends PHPUnit_Framework_TestCase {
 	{
 		$base = new Measurement(1, UnitDispersion::baseUnit());
 
-		$partsPerMillion = $base->convertTo(UnitDispersion::partsPerMillion());
-
-		$this->assertTrue($partsPerMillion->value() == 1.0, "{$base} converted to parts per million should be equal to 1 ppm instead of {$partsPerMillion}.");
+		$this->assertMeasurementEquals($base->convertTo(UnitDispersion::partsPerMillion()), 1.0, $base, "parts per million");
 	}
 
 }

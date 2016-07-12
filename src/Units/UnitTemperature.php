@@ -15,6 +15,17 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitTemperature extends Dimension {
 
+	const SYMBOL_KELVIN = "K";
+	const SYMBOL_DEGREES_CELSIUS = "°C";
+	const SYMBOL_DEGREES_FAHRENHEIT = "°F";
+
+	const COEFFICIENT_KELVIN = 1.0;
+	const COEFFICIENT_DEGREES_CELSIUS = 1.0;
+	const COEFFICIENT_DEGREES_FAHRENHEIT = 5.0 / 9.0;
+
+	const CONSTANT_DEGREES_CELSIUS = 273.15;
+	const CONSTANT_DEGREES_FAHRENHEIT = 255.37222222222427;
+
 	/**
 	 * Returns the base unit of temperature, equal to kelvin.
 	 *
@@ -32,7 +43,7 @@ class UnitTemperature extends Dimension {
 	 */
 	public static function kelvin(): UnitTemperature
 	{
-		return new static("K", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_KELVIN, new UnitConverterLinear(static::COEFFICIENT_KELVIN));
 	}
 
 	/**
@@ -42,7 +53,7 @@ class UnitTemperature extends Dimension {
 	 */
 	public static function celsius(): UnitTemperature
 	{
-		return new static("°C", new UnitConverterLinear(1.0, 273.15));
+		return new static(static::SYMBOL_DEGREES_CELSIUS, new UnitConverterLinear(static::COEFFICIENT_DEGREES_CELSIUS, static::CONSTANT_DEGREES_CELSIUS));
 	}
 
 	/**
@@ -52,7 +63,7 @@ class UnitTemperature extends Dimension {
 	 */
 	public static function fahrenheit(): UnitTemperature
 	{
-		return new static("°F", new UnitConverterLinear(5.0 / 9.0, 255.37222222222427));
+		return new static(static::SYMBOL_DEGREES_FAHRENHEIT, new UnitConverterLinear(static::COEFFICIENT_DEGREES_FAHRENHEIT, static::CONSTANT_DEGREES_FAHRENHEIT));
 	}
 
 }

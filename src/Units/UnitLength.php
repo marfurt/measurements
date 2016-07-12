@@ -14,6 +14,50 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitLength extends Dimension {
 
+	const SYMBOL_MEGAMETERS = "Mm";
+	const SYMBOL_KILOMETERS = "km";
+	const SYMBOL_HECTOMETERS = "hm";
+	const SYMBOL_DECAMETERS = "dam";
+	const SYMBOL_METERS = "m";
+	const SYMBOL_DECIMETERS = "dm";
+	const SYMBOL_CENTIMETERS = "cm";
+	const SYMBOL_MILLIMETERS = "mm";
+	const SYMBOL_MICROMETERS = "µm";
+	const SYMBOL_NANOMETERS = "nm";
+	const SYMBOL_PICOMETERS = "pm";
+	const SYMBOL_INCHES = "in";
+	const SYMBOL_FEET = "ft";
+	const SYMBOL_YARDS = "yd";
+	const SYMBOL_MILES = "mi";
+	const SYMBOL_LIGHTYEARS = "ly";
+	const SYMBOL_NAUTICAL_MILES = "NM";
+	const SYMBOL_FATHOMS = "ftm";
+	const SYMBOL_FURLONGS = "fur";
+	const SYMBOL_ASTRONOMIC_UNITS = "ua";
+	const SYMBOL_PARSECS = "pc";
+
+	const COEFFICIENT_MEGAMETERS = 1E+6;
+	const COEFFICIENT_KILOMETERS = 1000.0;
+	const COEFFICIENT_HECTOMETERS = 100.0;
+	const COEFFICIENT_DECAMETERS = 10.0;
+	const COEFFICIENT_METERS = 1.0;
+	const COEFFICIENT_DECIMETERS = 0.1;
+	const COEFFICIENT_CENTIMETERS = 0.01;
+	const COEFFICIENT_MILLIMETERS = 0.001;
+	const COEFFICIENT_MICROMETERS = 1E-6;
+	const COEFFICIENT_NANOMETERS = 1E-9;
+	const COEFFICIENT_PICOMETERS = 1E-12;
+	const COEFFICIENT_INCHES = 0.0254;
+	const COEFFICIENT_FEET = 0.3048;
+	const COEFFICIENT_YARDS = 0.9144;
+	const COEFFICIENT_MILES = 1609.34;
+	const COEFFICIENT_LIGHTYEARS = 9.461E+15;
+	const COEFFICIENT_NAUTICAL_MILES = 1852.0;
+	const COEFFICIENT_FATHOMS = 1.8288;
+	const COEFFICIENT_FURLONGS = 201.168;
+	const COEFFICIENT_ASTRONOMIC_UNITS = 1.496E+11;
+	const COEFFICIENT_PARSECS = 3.086E+16;
+
 	/**
 	 * Returns the base unit of length, equal to seconds.
 	 *
@@ -31,7 +75,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function megameters(): UnitLength
 	{
-		return new static("Mm", new UnitConverterLinear(1000000.0));
+		return new static(static::SYMBOL_MEGAMETERS, new UnitConverterLinear(static::COEFFICIENT_MEGAMETERS));
 	}
 
 	/**
@@ -41,7 +85,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function kilometers(): UnitLength
 	{
-		return new static("km", new UnitConverterLinear(1000.0));
+		return new static(static::SYMBOL_KILOMETERS, new UnitConverterLinear(static::COEFFICIENT_KILOMETERS));
 	}
 
 	/**
@@ -51,7 +95,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function hectometers(): UnitLength
 	{
-		return new static("hm", new UnitConverterLinear(100.0));
+		return new static(static::SYMBOL_HECTOMETERS, new UnitConverterLinear(static::COEFFICIENT_HECTOMETERS));
 	}
 
 	/**
@@ -61,7 +105,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function decameters(): UnitLength
 	{
-		return new static("dam", new UnitConverterLinear(10.0));
+		return new static(static::SYMBOL_DECAMETERS, new UnitConverterLinear(static::COEFFICIENT_DECAMETERS));
 	}
 
 	/**
@@ -71,7 +115,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function meters(): UnitLength
 	{
-		return new static("m", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_METERS, new UnitConverterLinear(static::COEFFICIENT_METERS));
 	}
 
 	/**
@@ -81,7 +125,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function decimeters(): UnitLength
 	{
-		return new static("dm", new UnitConverterLinear(0.1));
+		return new static(static::SYMBOL_DECIMETERS, new UnitConverterLinear(static::COEFFICIENT_DECIMETERS));
 	}
 
 	/**
@@ -91,7 +135,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function centimeters(): UnitLength
 	{
-		return new static("cm", new UnitConverterLinear(0.01));
+		return new static(static::SYMBOL_CENTIMETERS, new UnitConverterLinear(static::COEFFICIENT_CENTIMETERS));
 	}
 
 	/**
@@ -101,7 +145,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function millimeters(): UnitLength
 	{
-		return new static("mm", new UnitConverterLinear(0.001));
+		return new static(static::SYMBOL_MILLIMETERS, new UnitConverterLinear(static::COEFFICIENT_MILLIMETERS));
 	}
 
 	/**
@@ -111,7 +155,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function micrometers(): UnitLength
 	{
-		return new static("µm", new UnitConverterLinear(1E-6));
+		return new static(static::SYMBOL_MICROMETERS, new UnitConverterLinear(static::COEFFICIENT_MICROMETERS));
 	}
 
 	/**
@@ -121,7 +165,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function nanometers(): UnitLength
 	{
-		return new static("nm", new UnitConverterLinear(1E-9));
+		return new static(static::SYMBOL_NANOMETERS, new UnitConverterLinear(static::COEFFICIENT_NANOMETERS));
 	}
 
 	/**
@@ -131,7 +175,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function picometers(): UnitLength
 	{
-		return new static("pm", new UnitConverterLinear(1E-12));
+		return new static(static::SYMBOL_PICOMETERS, new UnitConverterLinear(static::COEFFICIENT_PICOMETERS));
 	}
 
 	/**
@@ -141,7 +185,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function inches(): UnitLength
 	{
-		return new static("in", new UnitConverterLinear(0.0254));
+		return new static(static::SYMBOL_INCHES, new UnitConverterLinear(static::COEFFICIENT_INCHES));
 	}
 
 	/**
@@ -151,7 +195,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function feet(): UnitLength
 	{
-		return new static("ft", new UnitConverterLinear(0.3048));
+		return new static(static::SYMBOL_FEET, new UnitConverterLinear(static::COEFFICIENT_FEET));
 	}
 
 	/**
@@ -161,7 +205,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function yards(): UnitLength
 	{
-		return new static("yd", new UnitConverterLinear(0.9144));
+		return new static(static::SYMBOL_YARDS, new UnitConverterLinear(static::COEFFICIENT_YARDS));
 	}
 
 	/**
@@ -171,7 +215,7 @@ class UnitLength extends Dimension {
 	 */
 	public static function miles(): UnitLength
 	{
-		return new static("mi", new UnitConverterLinear(1609.34));
+		return new static(static::SYMBOL_MILES, new UnitConverterLinear(static::COEFFICIENT_MILES));
 	}
 
 	/**
@@ -181,17 +225,57 @@ class UnitLength extends Dimension {
 	 */
 	public static function lightyears(): UnitLength
 	{
-		return new static("ly", new UnitConverterLinear(9.461E+15));
+		return new static(static::SYMBOL_LIGHTYEARS, new UnitConverterLinear(static::COEFFICIENT_LIGHTYEARS));
 	}
 
 	/**
-	 * Returns the nauticalMiles unit of length.
+	 * Returns the nautical miles unit of length.
 	 *
-	 * @return UnitLength The nauticalMiles unit of length.
+	 * @return UnitLength The nautical miles unit of length.
 	 */
 	public static function nauticalMiles(): UnitLength
 	{
-		return new static("NM", new UnitConverterLinear(1852.0));
+		return new static(static::SYMBOL_NAUTICAL_MILES, new UnitConverterLinear(static::COEFFICIENT_NAUTICAL_MILES));
+	}
+
+	/**
+	 * Returns the fathoms unit of length.
+	 *
+	 * @return UnitLength The fathoms unit of length.
+	 */
+	public static function fathoms(): UnitLength
+	{
+		return new static(static::SYMBOL_FATHOMS, new UnitConverterLinear(static::COEFFICIENT_FATHOMS));
+	}
+
+	/**
+	 * Returns the furlongs unit of length.
+	 *
+	 * @return UnitLength The furlongs unit of length.
+	 */
+	public static function furlongs(): UnitLength
+	{
+		return new static(static::SYMBOL_FURLONGS, new UnitConverterLinear(static::COEFFICIENT_FURLONGS));
+	}
+
+	/**
+	 * Returns the astronomical units unit of length.
+	 *
+	 * @return UnitLength The astronomical units unit of length.
+	 */
+	public static function astronomicalUnits(): UnitLength
+	{
+		return new static(static::SYMBOL_ASTRONOMIC_UNITS, new UnitConverterLinear(static::COEFFICIENT_ASTRONOMIC_UNITS));
+	}
+
+	/**
+	 * Returns the parsecs unit of length.
+	 *
+	 * @return UnitLength The parsecs unit of length.
+	 */
+	public static function parsecs(): UnitLength
+	{
+		return new static(static::SYMBOL_PARSECS, new UnitConverterLinear(static::COEFFICIENT_PARSECS));
 	}
 
 }

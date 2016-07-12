@@ -13,6 +13,30 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitPower extends Dimension {
 
+	const SYMBOL_TERAWATTS = "TW";
+	const SYMBOL_GIGAWATTS = "GW";
+	const SYMBOL_MEGAWATTS = "MW";
+	const SYMBOL_KILOWATTS = "kW";
+	const SYMBOL_WATTS = "W";
+	const SYMBOL_MILLIWATTS = "mW";
+	const SYMBOL_MICROWATTS = "µW";
+	const SYMBOL_NANOWATTS = "nW";
+	const SYMBOL_PICOWATTS = "pW";
+	const SYMBOL_FEMTOWATTS = "fW";
+	const SYMBOL_HORSE_POWER = "hp";
+
+	const COEFFICIENT_TERAWATTS = 1E+12;
+	const COEFFICIENT_GIGAWATTS = 1E+9;
+	const COEFFICIENT_MEGAWATTS = 1E+6;
+	const COEFFICIENT_KILOWATTS = 1000.0;
+	const COEFFICIENT_WATTS = 1.0;
+	const COEFFICIENT_MILLIWATTS = 0.001;
+	const COEFFICIENT_MICROWATTS = 1E-6;
+	const COEFFICIENT_NANOWATTS = 1E-9;
+	const COEFFICIENT_PICOWATTS = 1E-12;
+	const COEFFICIENT_FEMTOWATTS = 1E-15;
+	const COEFFICIENT_HORSE_POWER = 745.7;
+	
 	/**
 	 * Returns the base unit of power, equal to watts.
 	 *
@@ -30,7 +54,7 @@ class UnitPower extends Dimension {
 	 */
 	public static function terawatts(): UnitPower
 	{
-		return new static("TW", new UnitConverterLinear(1E+12));
+		return new static(static::SYMBOL_TERAWATTS, new UnitConverterLinear(static::COEFFICIENT_TERAWATTS));
 	}
 
 	/**
@@ -40,7 +64,7 @@ class UnitPower extends Dimension {
 	 */
 	public static function gigawatts(): UnitPower
 	{
-		return new static("GW", new UnitConverterLinear(1E+9));
+		return new static(static::SYMBOL_GIGAWATTS, new UnitConverterLinear(static::COEFFICIENT_GIGAWATTS));
 	}
 
 	/**
@@ -50,7 +74,7 @@ class UnitPower extends Dimension {
 	 */
 	public static function megawatts(): UnitPower
 	{
-		return new static("MW", new UnitConverterLinear(1000000.0));
+		return new static(static::SYMBOL_MEGAWATTS, new UnitConverterLinear(static::COEFFICIENT_MEGAWATTS));
 	}
 
 	/**
@@ -60,7 +84,7 @@ class UnitPower extends Dimension {
 	 */
 	public static function kilowatts(): UnitPower
 	{
-		return new static("kW", new UnitConverterLinear(1000.0));
+		return new static(static::SYMBOL_KILOWATTS, new UnitConverterLinear(static::COEFFICIENT_KILOWATTS));
 	}
 
 	/**
@@ -70,7 +94,7 @@ class UnitPower extends Dimension {
 	 */
 	public static function watts(): UnitPower
 	{
-		return new static("W", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_WATTS, new UnitConverterLinear(static::COEFFICIENT_WATTS));
 	}
 
 	/**
@@ -80,7 +104,7 @@ class UnitPower extends Dimension {
 	 */
 	public static function milliwatts(): UnitPower
 	{
-		return new static("mW", new UnitConverterLinear(0.001));
+		return new static(static::SYMBOL_MILLIWATTS, new UnitConverterLinear(static::COEFFICIENT_MILLIWATTS));
 	}
 
 	/**
@@ -90,7 +114,7 @@ class UnitPower extends Dimension {
 	 */
 	public static function microwatts(): UnitPower
 	{
-		return new static("µW", new UnitConverterLinear(0.000001));
+		return new static(static::SYMBOL_MICROWATTS, new UnitConverterLinear(static::COEFFICIENT_MICROWATTS));
 	}
 
 	/**
@@ -100,7 +124,7 @@ class UnitPower extends Dimension {
 	 */
 	public static function nanowatts(): UnitPower
 	{
-		return new static("nW", new UnitConverterLinear(1E-9));
+		return new static(static::SYMBOL_NANOWATTS, new UnitConverterLinear(static::COEFFICIENT_NANOWATTS));
 	}
 
 	/**
@@ -110,7 +134,7 @@ class UnitPower extends Dimension {
 	 */
 	public static function picowatts(): UnitPower
 	{
-		return new static("pW", new UnitConverterLinear(1E-12));
+		return new static(static::SYMBOL_PICOWATTS, new UnitConverterLinear(static::COEFFICIENT_PICOWATTS));
 	}
 
 	/**
@@ -120,7 +144,7 @@ class UnitPower extends Dimension {
 	 */
 	public static function femtowatts(): UnitPower
 	{
-		return new static("fW", new UnitConverterLinear(1E-15));
+		return new static(static::SYMBOL_FEMTOWATTS, new UnitConverterLinear(static::COEFFICIENT_FEMTOWATTS));
 	}
 
 	/**
@@ -130,7 +154,7 @@ class UnitPower extends Dimension {
 	 */
 	public static function horsepower(): UnitPower
 	{
-		return new static("hp", new UnitConverterLinear(745.7));
+		return new static(static::SYMBOL_HORSE_POWER, new UnitConverterLinear(static::COEFFICIENT_HORSE_POWER));
 	}
 
 }

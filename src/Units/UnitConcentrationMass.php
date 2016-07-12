@@ -14,6 +14,14 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitConcentrationMass extends Dimension {
 
+	const SYMBOL_GRAMS_PER_LITER = "g/L";
+	const SYMBOL_MILLIGRAMS_PER_DECILITER = "mg/dL";
+	const SYMBOL_MILLIMOLES_PER_LITER = "mmol/L";
+
+	const COEFFICIENT_GRAMS_PER_LITER = 1.0;
+	const COEFFICIENT_MILLIGRAMS_PER_DECILITER = 0.01;
+	const COEFFICIENT_MILLIMOLES_PER_LITER = 18.0;
+
 	/**
 	 * Returns the base unit of concentration of mass, equal to grams per liter.
 	 *
@@ -31,7 +39,7 @@ class UnitConcentrationMass extends Dimension {
 	 */
 	public static function gramsPerLiter(): UnitConcentrationMass
 	{
-		return new static("g/L", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_GRAMS_PER_LITER, new UnitConverterLinear(static::COEFFICIENT_GRAMS_PER_LITER));
 	}
 
 	/**
@@ -41,7 +49,7 @@ class UnitConcentrationMass extends Dimension {
 	 */
 	public static function milligramsPerDeciliter(): UnitConcentrationMass
 	{
-		return new static("mg/dL", new UnitConverterLinear(0.01));
+		return new static(static::SYMBOL_MILLIGRAMS_PER_DECILITER, new UnitConverterLinear(static::COEFFICIENT_MILLIGRAMS_PER_DECILITER));
 	}
 
 	/**
@@ -53,7 +61,7 @@ class UnitConcentrationMass extends Dimension {
 	 */
 	public static function millimolesPerLiterWithGramsPerMole($gramsPerMole): UnitConcentrationMass
 	{
-		return new static("mmol/L", new UnitConverterLinear(18 * $gramsPerMole));
+		return new static(static::SYMBOL_MILLIMOLES_PER_LITER, new UnitConverterLinear(static::COEFFICIENT_MILLIMOLES_PER_LITER * $gramsPerMole));
 	}
 
 }

@@ -14,6 +14,18 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitElectricResistance extends Dimension {
 
+	const SYMBOL_MEGAOHMS = "MΩ";
+	const SYMBOL_KILOOHMS = "kΩ";
+	const SYMBOL_OHMS = "Ω";
+	const SYMBOL_MILLIOHMS = "mΩ";
+	const SYMBOL_MICROOHMS = "µΩ";
+
+	const COEFFICIENT_MEGAOHMS = 1E+6;
+	const COEFFICIENT_KILOOHMS = 1000.0;
+	const COEFFICIENT_OHMS = 1.0;
+	const COEFFICIENT_MILLIOHMS = 0.001;
+	const COEFFICIENT_MICROOHMS = 1E-6;
+
 	/**
 	 * Returns the base unit of electric resistance, equal to ohms.
 	 *
@@ -31,7 +43,7 @@ class UnitElectricResistance extends Dimension {
 	 */
 	public static function megaohms(): UnitElectricResistance
 	{
-		return new static("MΩ", new UnitConverterLinear(1000000.0));
+		return new static(static::SYMBOL_MEGAOHMS, new UnitConverterLinear(static::COEFFICIENT_MEGAOHMS));
 	}
 
 	/**
@@ -41,7 +53,7 @@ class UnitElectricResistance extends Dimension {
 	 */
 	public static function kiloohms(): UnitElectricResistance
 	{
-		return new static("kΩ", new UnitConverterLinear(1000.0));
+		return new static(static::SYMBOL_KILOOHMS, new UnitConverterLinear(static::COEFFICIENT_KILOOHMS));
 	}
 
 	/**
@@ -51,7 +63,7 @@ class UnitElectricResistance extends Dimension {
 	 */
 	public static function ohms(): UnitElectricResistance
 	{
-		return new static("Ω", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_OHMS, new UnitConverterLinear(static::COEFFICIENT_OHMS));
 	}
 
 	/**
@@ -61,7 +73,7 @@ class UnitElectricResistance extends Dimension {
 	 */
 	public static function milliohms(): UnitElectricResistance
 	{
-		return new static("mΩ", new UnitConverterLinear(0.001));
+		return new static(static::SYMBOL_MILLIOHMS, new UnitConverterLinear(static::COEFFICIENT_MILLIOHMS));
 	}
 
 	/**
@@ -71,7 +83,7 @@ class UnitElectricResistance extends Dimension {
 	 */
 	public static function microohms(): UnitElectricResistance
 	{
-		return new static("µΩ", new UnitConverterLinear(0.000001));
+		return new static(static::SYMBOL_MICROOHMS, new UnitConverterLinear(static::COEFFICIENT_MICROOHMS));
 	}
 
 }

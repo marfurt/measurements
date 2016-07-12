@@ -19,7 +19,7 @@ class ComparisonTests extends PHPUnit_Framework_TestCase {
 
 		$this->assertTrue($meters->compareTo($centimeters, $comparison) == 0, "Meters should be compared to centimeters.");
 
-		$this->setExpectedException(UnitException::class);
+		$this->expectException(UnitException::class);
 		$meters->compareTo($seconds, $comparison);
 	}
 

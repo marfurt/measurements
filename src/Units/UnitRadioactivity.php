@@ -15,6 +15,12 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitRadioactivity extends Dimension {
 
+	const SYMBOL_BECQUEREL = "Bq";
+	const SYMBOL_CURIE = "Ci";
+
+	const COEFFICIENT_BECQUEREL = 1.0;
+	const COEFFICIENT_CURIE = 3.7E10;
+
 	/**
 	 * Returns the base unit of radioactivity.
 	 *
@@ -32,7 +38,7 @@ class UnitRadioactivity extends Dimension {
 	 */
 	public static function becquerel(): UnitRadioactivity
 	{
-		return new UnitRadioactivity("Bq", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_BECQUEREL, new UnitConverterLinear(static::COEFFICIENT_BECQUEREL));
 	}
 
 	/**
@@ -42,7 +48,7 @@ class UnitRadioactivity extends Dimension {
 	 */
 	public static function curie(): UnitRadioactivity
 	{
-		return new UnitRadioactivity("Ci", new UnitConverterLinear(3.7E10));
+		return new static(static::SYMBOL_CURIE, new UnitConverterLinear(static::COEFFICIENT_CURIE));
 	}
 
 }

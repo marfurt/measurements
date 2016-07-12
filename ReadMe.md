@@ -43,7 +43,7 @@ A `Measurement` object represents a measured quantity, using a unit of measure a
 
 `Measurement` objects are initialized with a `Unit` object and double value. They are immutable and cannot be changed after being created.
 
-> The library provides specific subclasses for measurements that correspond to the provided units (see the list below).
+> The library provides specific subclasses (so called Quantities) for measurements that correspond to the provided units (see the list below).
  
 
 ## Provided Units & Quantities
@@ -97,6 +97,8 @@ echo $duration; // = 1.5 hr
 You may want to enforce the unit type of a measurement by using the provided measurement subclasses (_aka_ _Quantities_):
 
 ``` php
+use Measurements\Units\UnitLength;
+use Measurements\Units\UnitDuration;
 use Measurements\Quantities\Length;
 use Measurements\Quantities\Duration;
 
@@ -109,12 +111,10 @@ echo $duration; // = 1.5 hr
 $invalid = new Length(4.48, UnitDuration::hours()); // Will throw a UnitException exception
 ```
 
-The provided Quantities also serve as "static proxies", providing the benefit of an expressive syntax to create measurements.
+The _Quantities_ objects also provide the benefit of an expressive syntax to create measurements. They make use of the `__callStatic()` magic-method to create a new instance by resolving the derived dimension.
 
 ``` php
-use Measurements\Units\UnitLength;
 use Measurements\Quantities\Length;
-use Measurements\Units\UnitDuration;
 use Measurements\Quantities\Duration;
 
 $length = Length::meters(4.48);
@@ -124,6 +124,20 @@ $duration = Duration::hours(1.5);
 echo $duration; // = 1.5 hr
 
 $invalid = Length::hours(4.48); // Will throw a BadMethodCallException exception
+```
+
+Some of the _Measurement_ subclasses expose convenience methods to easily create instances from other measurements.
+
+``` php
+use Measurements\Quantities\Length;
+use Measurements\Quantities\Duration;
+
+$distance = Length::kilometers(18);
+$time = Duration::hours(1);
+
+$speed = Speed::fromLengthAndDuration($distance, $time);
+echo $speed->toString(); // 5 m/s
+
 ```
 
 
@@ -138,6 +152,17 @@ use Measurements\Units\UnitLength;
 $meters = new Measurement(4.48, UnitLength::meters());
 
 $centimeters = $meters->convertTo(UnitLength::centimeters());
+echo $centimeters; // = 448 cm
+```
+
+Measurements created as _Quantities_ objects also provide a short syntax to convert them. They make use of the `__call()` magic-method to resolve the derived dimension.
+
+``` php
+use Measurements\Quantities\Length;
+
+$meters = Length::meters(4.48);
+
+$centimeters = $meters->toCentimeters();
 echo $centimeters; // = 448 cm
 ```
 

@@ -14,6 +14,20 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitAngle extends Dimension {
 
+	const SYMBOL_DEGREES = "°";
+	const SYMBOL_ARC_MINUTES = "ʹ";
+	const SYMBOL_ARC_SECONDS = "″";
+	const SYMBOL_RADIANS = "rad";
+	const SYMBOL_GRADIANS = "grad";
+	const SYMBOL_REVOLUTIONS = "rev";
+
+	const COEFFICIENT_DEGREES = 1.0;
+	const COEFFICIENT_ARC_MINUTES = 0.016667;
+	const COEFFICIENT_ARC_SECONDS = 0.00027778;
+	const COEFFICIENT_RADIANS = 57.2958;
+	const COEFFICIENT_GRADIANS = 0.9;
+	const COEFFICIENT_REVOLUTIONS = 6.28319;
+
 	/**
 	 * Returns the base unit of rotation, equal to degrees.
 	 *
@@ -31,7 +45,7 @@ class UnitAngle extends Dimension {
 	 */
 	public static function degrees(): UnitAngle
 	{
-		return new static("°", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_DEGREES, new UnitConverterLinear(static::COEFFICIENT_DEGREES));
 	}
 
 	/**
@@ -41,7 +55,7 @@ class UnitAngle extends Dimension {
 	 */
 	public static function arcMinutes(): UnitAngle
 	{
-		return new static("ʹ", new UnitConverterLinear(0.016667));
+		return new static(static::SYMBOL_ARC_MINUTES, new UnitConverterLinear(static::COEFFICIENT_ARC_MINUTES));
 	}
 
 	/**
@@ -51,7 +65,7 @@ class UnitAngle extends Dimension {
 	 */
 	public static function arcSeconds(): UnitAngle
 	{
-		return new static("°", new UnitConverterLinear(0.00027778));
+		return new static(static::SYMBOL_ARC_SECONDS, new UnitConverterLinear(static::COEFFICIENT_ARC_SECONDS));
 	}
 
 	/**
@@ -61,7 +75,7 @@ class UnitAngle extends Dimension {
 	 */
 	public static function radians(): UnitAngle
 	{
-		return new static("rad", new UnitConverterLinear(57.2958));
+		return new static(static::SYMBOL_RADIANS, new UnitConverterLinear(static::COEFFICIENT_RADIANS));
 	}
 
 	/**
@@ -71,7 +85,7 @@ class UnitAngle extends Dimension {
 	 */
 	public static function gradians(): UnitAngle
 	{
-		return new static("grad", new UnitConverterLinear(0.9));
+		return new static(static::SYMBOL_GRADIANS, new UnitConverterLinear(static::COEFFICIENT_GRADIANS));
 	}
 
 	/**
@@ -81,7 +95,7 @@ class UnitAngle extends Dimension {
 	 */
 	public static function revolutions(): UnitAngle
 	{
-		return new static("rev", new UnitConverterLinear(6.28319));
+		return new static(static::SYMBOL_REVOLUTIONS, new UnitConverterLinear(static::COEFFICIENT_REVOLUTIONS));
 	}
 
 }

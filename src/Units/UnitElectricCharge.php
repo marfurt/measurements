@@ -15,6 +15,20 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitElectricCharge extends Dimension {
 
+	const SYMBOL_COULOMBS = "C";
+	const SYMBOL_MEGAAMPERE_HOURS = "MAh";
+	const SYMBOL_KILOAMPERE_HOURS = "kAh";
+	const SYMBOL_AMPERE_HOURS = "Ah";
+	const SYMBOL_MILLIAMPERE_HOURS = "mAh";
+	const SYMBOL_MICROAMPERE_HOURS = "µAh";
+
+	const COEFFICIENT_COULOMBS = 1.0;
+	const COEFFICIENT_MEGAAMPERE_HOURS = 3.6E+9;
+	const COEFFICIENT_KILOAMPERE_HOURS = 3600000.0;
+	const COEFFICIENT_AMPERE_HOURS = 3600.0;
+	const COEFFICIENT_MILLIAMPERE_HOURS = 3.6;
+	const COEFFICIENT_MICROAMPERE_HOURS = 0.0036;
+
 	/**
 	 * Returns the base electric charge unit, equal to coulombs.
 	 *
@@ -32,7 +46,7 @@ class UnitElectricCharge extends Dimension {
 	 */
 	public static function coulombs(): UnitElectricCharge
 	{
-		return new static("C", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_COULOMBS, new UnitConverterLinear(static::COEFFICIENT_COULOMBS));
 	}
 
 	/**
@@ -42,7 +56,7 @@ class UnitElectricCharge extends Dimension {
 	 */
 	public static function megaampereHours(): UnitElectricCharge
 	{
-		return new static("MAh", new UnitConverterLinear(3.6E+9));
+		return new static(static::SYMBOL_MEGAAMPERE_HOURS, new UnitConverterLinear(static::COEFFICIENT_MEGAAMPERE_HOURS));
 	}
 
 	/**
@@ -52,7 +66,7 @@ class UnitElectricCharge extends Dimension {
 	 */
 	public static function kiloampereHours(): UnitElectricCharge
 	{
-		return new static("kAh", new UnitConverterLinear(3600000.0));
+		return new static(static::SYMBOL_KILOAMPERE_HOURS, new UnitConverterLinear(static::COEFFICIENT_KILOAMPERE_HOURS));
 	}
 
 	/**
@@ -62,7 +76,7 @@ class UnitElectricCharge extends Dimension {
 	 */
 	public static function ampereHours(): UnitElectricCharge
 	{
-		return new static("Ah", new UnitConverterLinear(3600.0));
+		return new static(static::SYMBOL_AMPERE_HOURS, new UnitConverterLinear(static::COEFFICIENT_AMPERE_HOURS));
 	}
 
 	/**
@@ -72,7 +86,7 @@ class UnitElectricCharge extends Dimension {
 	 */
 	public static function milliampereHours(): UnitElectricCharge
 	{
-		return new static("mAh", new UnitConverterLinear(3.6));
+		return new static(static::SYMBOL_MILLIAMPERE_HOURS, new UnitConverterLinear(static::COEFFICIENT_MILLIAMPERE_HOURS));
 	}
 
 	/**
@@ -82,7 +96,7 @@ class UnitElectricCharge extends Dimension {
 	 */
 	public static function microampereHours(): UnitElectricCharge
 	{
-		return new static("µAh", new UnitConverterLinear(0.0036));
+		return new static(static::SYMBOL_MICROAMPERE_HOURS, new UnitConverterLinear(static::COEFFICIENT_MICROAMPERE_HOURS));
 	}
 
 }

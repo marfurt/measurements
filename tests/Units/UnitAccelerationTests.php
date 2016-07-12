@@ -6,6 +6,8 @@ use Measurements\Units\UnitAcceleration;
 
 class UnitAccelerationTests extends PHPUnit_Framework_TestCase {
 
+	use InteractsWithUnits;
+
 	/** @test */
 	public function it_defines_metersPerSecondSquared_as_base_unit()
 	{
@@ -17,11 +19,8 @@ class UnitAccelerationTests extends PHPUnit_Framework_TestCase {
 	{
 		$base = new Measurement(1, UnitAcceleration::baseUnit());
 
-		$metersPerSecondSquared = $base->convertTo(UnitAcceleration::metersPerSecondSquared());
-		$gravity = $base->convertTo(UnitAcceleration::gravity());
-
-		$this->assertTrue($metersPerSecondSquared->value() == 1, "{$base} converted to meters per second squared should be equal to 1 m/s² instead of {$metersPerSecondSquared}.");
-		$this->assertTrue($gravity->value() == 1.0 / 9.81, "{$base} converted to gravity should be equal to 0.1019367992 g instead of {$gravity}.");
+		$this->assertMeasurementEquals($base->convertTo(UnitAcceleration::metersPerSecondSquared()), 1.0, $base, "meters per second squared");
+		$this->assertMeasurementEquals($base->convertTo(UnitAcceleration::gravity()), 1.0 / 9.81, $base, "gravity");
 	}
 
 }

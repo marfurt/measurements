@@ -14,6 +14,10 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitIlluminance extends Dimension {
 
+	const SYMBOL_LUX = "lx";
+
+	const COEFFICIENT_LUX = 1.0;
+
 	/**
 	 * Returns the base unit of illuminance.
 	 *
@@ -31,7 +35,7 @@ class UnitIlluminance extends Dimension {
 	 */
 	public static function lux(): UnitIlluminance
 	{
-		return new static("lx", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_LUX, new UnitConverterLinear(static::COEFFICIENT_LUX));
 	}
 
 }

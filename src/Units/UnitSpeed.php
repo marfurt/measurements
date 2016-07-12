@@ -14,6 +14,16 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitSpeed extends Dimension {
 
+	const SYMBOL_METERS_PER_SECOND = "m/s";
+	const SYMBOL_KILOMETERS_PER_HOUR = "km/h";
+	const SYMBOL_MILES_PER_HOUR = "mph";
+	const SYMBOL_KNOTS = "kn";
+
+	const COEFFICIENT_METERS_PER_SECOND = 1.0;
+	const COEFFICIENT_KILOMETERS_PER_HOUR = 0.277778;
+	const COEFFICIENT_MILES_PER_HOUR = 0.44704;
+	const COEFFICIENT_KNOTS = 0.514444;
+
 	/**
 	 * Returns the base unit of speed, equal to meters per second.
 	 *
@@ -31,7 +41,7 @@ class UnitSpeed extends Dimension {
 	 */
 	public static function metersPerSecond(): UnitSpeed
 	{
-		return new static("m/s", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_METERS_PER_SECOND, new UnitConverterLinear(static::COEFFICIENT_METERS_PER_SECOND));
 	}
 
 	/**
@@ -41,7 +51,7 @@ class UnitSpeed extends Dimension {
 	 */
 	public static function kilometersPerHour(): UnitSpeed
 	{
-		return new static("km/h", new UnitConverterLinear(0.277778));
+		return new static(static::SYMBOL_KILOMETERS_PER_HOUR, new UnitConverterLinear(static::COEFFICIENT_KILOMETERS_PER_HOUR));
 	}
 
 	/**
@@ -51,7 +61,7 @@ class UnitSpeed extends Dimension {
 	 */
 	public static function milesPerHour(): UnitSpeed
 	{
-		return new static("mph", new UnitConverterLinear(0.44704));
+		return new static(static::SYMBOL_MILES_PER_HOUR, new UnitConverterLinear(static::COEFFICIENT_MILES_PER_HOUR));
 	}
 
 	/**
@@ -61,7 +71,7 @@ class UnitSpeed extends Dimension {
 	 */
 	public static function knots(): UnitSpeed
 	{
-		return new static("kn", new UnitConverterLinear(0.514444));
+		return new static(static::SYMBOL_KNOTS, new UnitConverterLinear(static::COEFFICIENT_KNOTS));
 	}
 
 }

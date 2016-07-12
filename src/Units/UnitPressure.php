@@ -14,6 +14,30 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitPressure extends Dimension {
 
+	const SYMBOL_NEWTONS_PER_METERS_SQUARED = "N/m²";
+	const SYMBOL_GIGAPASCALS = "GPa";
+	const SYMBOL_MEGAPASCALS = "MPa";
+	const SYMBOL_KILOPASCALS = "kPa";
+	const SYMBOL_HECTOPASCALS = "hPa";
+	const SYMBOL_PASCALS = "Pa";
+	const SYMBOL_INCHES_OF_MERCURY = "inHg";
+	const SYMBOL_BARS = "bar";
+	const SYMBOL_MILLIBARS = "mbar";
+	const SYMBOL_MILLIMETERS_OF_MERCURY = "mmHg";
+	const SYMBOL_POUNDS_PER_SQUARE_INCH = "psi";
+
+	const COEFFICIENT_NEWTONS_PER_METERS_SQUARED = 1.0;
+	const COEFFICIENT_GIGAPASCALS = 1E+9;
+	const COEFFICIENT_MEGAPASCALS = 1E+6;
+	const COEFFICIENT_KILOPASCALS = 1000.0;
+	const COEFFICIENT_HECTOPASCALS = 100.0;
+	const COEFFICIENT_PASCALS = 1.0;
+	const COEFFICIENT_INCHES_OF_MERCURY = 3386.39;
+	const COEFFICIENT_BARS = 1E+5;
+	const COEFFICIENT_MILLIBARS = 100.0;
+	const COEFFICIENT_MILLIMETERS_OF_MERCURY = 133.322;
+	const COEFFICIENT_POUNDS_PER_SQUARE_INCH = 6894.76;
+
 	/**
 	 * Returns the base unit of pressure, equal to newtons per meter squared.
 	 *
@@ -31,7 +55,7 @@ class UnitPressure extends Dimension {
 	 */
 	public static function newtonsPerMeterSquared(): UnitPressure
 	{
-		return new static("N/m²", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_NEWTONS_PER_METERS_SQUARED, new UnitConverterLinear(static::COEFFICIENT_NEWTONS_PER_METERS_SQUARED));
 	}
 
 	/**
@@ -41,7 +65,7 @@ class UnitPressure extends Dimension {
 	 */
 	public static function gigapascals(): UnitPressure
 	{
-		return new static("GPa", new UnitConverterLinear(1E+9));
+		return new static(static::SYMBOL_GIGAPASCALS, new UnitConverterLinear(static::COEFFICIENT_GIGAPASCALS));
 	}
 
 	/**
@@ -51,7 +75,7 @@ class UnitPressure extends Dimension {
 	 */
 	public static function megapascals(): UnitPressure
 	{
-		return new static("MPa", new UnitConverterLinear(1000000.0));
+		return new static(static::SYMBOL_MEGAPASCALS, new UnitConverterLinear(static::COEFFICIENT_MEGAPASCALS));
 	}
 
 	/**
@@ -61,7 +85,7 @@ class UnitPressure extends Dimension {
 	 */
 	public static function kilopascals(): UnitPressure
 	{
-		return new static("kPa", new UnitConverterLinear(1000.0));
+		return new static(static::SYMBOL_KILOPASCALS, new UnitConverterLinear(static::COEFFICIENT_KILOPASCALS));
 	}
 
 	/**
@@ -71,7 +95,7 @@ class UnitPressure extends Dimension {
 	 */
 	public static function hectopascals(): UnitPressure
 	{
-		return new static("hPa", new UnitConverterLinear(100.0));
+		return new static(static::SYMBOL_HECTOPASCALS, new UnitConverterLinear(static::COEFFICIENT_HECTOPASCALS));
 	}
 
 	/**
@@ -81,7 +105,7 @@ class UnitPressure extends Dimension {
 	 */
 	public static function pascals(): UnitPressure
 	{
-		return new static("Pa", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_PASCALS, new UnitConverterLinear(static::COEFFICIENT_PASCALS));
 	}
 
 	/**
@@ -91,7 +115,7 @@ class UnitPressure extends Dimension {
 	 */
 	public static function inchesOfMercury(): UnitPressure
 	{
-		return new static("inHg", new UnitConverterLinear(3386.39));
+		return new static(static::SYMBOL_INCHES_OF_MERCURY, new UnitConverterLinear(static::COEFFICIENT_INCHES_OF_MERCURY));
 	}
 
 	/**
@@ -101,7 +125,7 @@ class UnitPressure extends Dimension {
 	 */
 	public static function bars(): UnitPressure
 	{
-		return new static("bar", new UnitConverterLinear(100000));
+		return new static(static::SYMBOL_BARS, new UnitConverterLinear(static::COEFFICIENT_BARS));
 	}
 
 	/**
@@ -111,7 +135,7 @@ class UnitPressure extends Dimension {
 	 */
 	public static function millibars(): UnitPressure
 	{
-		return new static("mbar", new UnitConverterLinear(100));
+		return new static(static::SYMBOL_MILLIBARS, new UnitConverterLinear(static::COEFFICIENT_MILLIBARS));
 	}
 
 	/**
@@ -121,7 +145,7 @@ class UnitPressure extends Dimension {
 	 */
 	public static function millimetersOfMercury(): UnitPressure
 	{
-		return new static("mmHg", new UnitConverterLinear(133.322));
+		return new static(static::SYMBOL_MILLIMETERS_OF_MERCURY, new UnitConverterLinear(static::COEFFICIENT_MILLIMETERS_OF_MERCURY));
 	}
 
 	/**
@@ -131,7 +155,7 @@ class UnitPressure extends Dimension {
 	 */
 	public static function poundsPerSquareInch(): UnitPressure
 	{
-		return new static("psi", new UnitConverterLinear(6894.76));
+		return new static(static::SYMBOL_POUNDS_PER_SQUARE_INCH, new UnitConverterLinear(static::COEFFICIENT_POUNDS_PER_SQUARE_INCH));
 	}
 
 }

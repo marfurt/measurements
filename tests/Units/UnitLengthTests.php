@@ -6,6 +6,8 @@ use Measurements\Units\UnitLength;
 
 class UnitLengthTests extends PHPUnit_Framework_TestCase {
 
+	use InteractsWithUnits;
+
 	/** @test */
 	public function it_defines_meters_as_base_unit()
 	{
@@ -17,41 +19,27 @@ class UnitLengthTests extends PHPUnit_Framework_TestCase {
 	{
 		$base = new Measurement(1, UnitLength::baseUnit());
 
-		$megameters = $base->convertTo(UnitLength::megameters());
-		$kilometers = $base->convertTo(UnitLength::kilometers());
-		$hectometers = $base->convertTo(UnitLength::hectometers());
-		$decameters = $base->convertTo(UnitLength::decameters());
-		$meters = $base->convertTo(UnitLength::meters());
-		$decimeters = $base->convertTo(UnitLength::decimeters());
-		$centimeters = $base->convertTo(UnitLength::centimeters());
-		$millimeters = $base->convertTo(UnitLength::millimeters());
-		$micrometers = $base->convertTo(UnitLength::micrometers());
-		$nanometers = $base->convertTo(UnitLength::nanometers());
-		$picometers = $base->convertTo(UnitLength::picometers());
-		$inches = $base->convertTo(UnitLength::inches());
-		$feet = $base->convertTo(UnitLength::feet());
-		$yards = $base->convertTo(UnitLength::yards());
-		$miles = $base->convertTo(UnitLength::miles());
-		$lightyears = $base->convertTo(UnitLength::lightyears());
-		$nauticalMiles = $base->convertTo(UnitLength::nauticalMiles());
-
-		$this->assertTrue($megameters->value() == 1E-6, "{$base} converted to meters should be equal to 1E-6 m instead of {$megameters}.");
-		$this->assertTrue($kilometers->value() == 0.001, "{$base} converted to meters should be equal to 0.001 m instead of {$kilometers}.");
-		$this->assertTrue($hectometers->value() == 0.01, "{$base} converted to meters should be equal to 0.001 m instead of {$hectometers}.");
-		$this->assertTrue($decameters->value() == 0.1, "{$base} converted to meters should be equal to 0.001 m instead of {$decameters}.");
-		$this->assertTrue($meters->value() == 1, "{$base} converted to meters should be equal to 1 m instead of {$meters}.");
-		$this->assertTrue($decimeters->value() == 10, "{$base} converted to decimeters should be equal to 10 dm instead of {$decimeters}.");
-		$this->assertTrue($centimeters->value() == 100, "{$base} converted to centimeters should be equal to 100 cm instead of {$centimeters}.");
-		$this->assertTrue($millimeters->value() == 1000, "{$base} converted to millimeters should be equal to 1000 mm instead of {$millimeters}.");
-		$this->assertTrue($micrometers->value() == 1E+6, "{$base} converted to micrometers should be equal to 1E+6 µm instead of {$micrometers}.");
-		$this->assertTrue($nanometers->value() == 1.0/1E-9, "{$base} converted to nanometers should be equal to 1E+9 nm instead of {$nanometers}.");
-		$this->assertTrue($picometers->value() == 1E+12, "{$base} converted to picometers should be equal to 1E+12 pm instead of {$picometers}.");
-		$this->assertTrue($inches->value() == 1.0 / 0.0254, "{$base} converted to miles should be equal to 0.02609765494 in instead of {$inches}.");
-		$this->assertTrue($feet->value() == 1.0 / 0.3048, "{$base} m converted to miles should be equal to 0.02609765494 ft instead of {$feet}.");
-		$this->assertTrue($yards->value() == 1.0 / 0.9144, "{$base} converted to miles should be equal to 0.02609765494 yd instead of {$yards}.");
-		$this->assertTrue($miles->value() == 1.0 / 1609.34, "{$base} converted to miles should be equal to 0.02609765494 mi instead of {$miles}.");
-		$this->assertTrue($lightyears->value() == 1.0 / 9.461E+15, "{$base} converted to miles should be equal to 0.02609765494 ly instead of {$lightyears}.");
-		$this->assertTrue($nauticalMiles->value() == 1.0 / 1852.0, "{$base} converted to miles should be equal to 0.02609765494 NM instead of {$nauticalMiles}.");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::megameters()), 1E-6, $base, "megameters");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::kilometers()), 0.001, $base, "kilometers");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::hectometers()), 0.01, $base, "hectometers");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::decameters()), 0.1, $base, "decameters");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::meters()), 1, $base, "meters");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::decimeters()), 10, $base, "decimeters");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::centimeters()), 100, $base, "centimeters");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::millimeters()), 1000, $base, "millimeters");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::micrometers()), 1E+6, $base, "micrometers");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::nanometers()), 1.0 / 1E-9, $base, "nanometers");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::picometers()), 1E+12, $base, "picometers");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::inches()), 1.0 / 0.0254, $base, "inches");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::feet()), 1.0 / 0.3048, $base, "feet");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::yards()), 1.0 / 0.9144, $base, "yards");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::miles()), 1.0 / 1609.34, $base, "miles");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::lightyears()), 1.0 / 9.461E+15, $base, "lightyears");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::nauticalMiles()), 1.0 / 1852.0, $base, "nautical miles");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::fathoms()), 1.0 / 1.8288, $base, "fathoms");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::furlongs()), 1.0 / 201.168, $base, "furlongs");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::astronomicalUnits()), 1.0 / 1.496E+11, $base, "astronomical units");
+		$this->assertMeasurementEquals($base->convertTo(UnitLength::parsecs()), 1.0 / 3.086E+16, $base, "parsecs");
 	}
 
 }

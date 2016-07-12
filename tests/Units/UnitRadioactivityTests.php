@@ -6,6 +6,8 @@ use Measurements\Units\UnitRadioactivity;
 
 class UnitRadioactivityTests extends PHPUnit_Framework_TestCase {
 
+	use InteractsWithUnits;
+
 	/** @test */
 	public function it_defines_becquerel_as_base_unit()
 	{
@@ -17,11 +19,8 @@ class UnitRadioactivityTests extends PHPUnit_Framework_TestCase {
 	{
 		$base = new Measurement(1, UnitRadioactivity::baseUnit());
 
-		$becquerel = $base->convertTo(UnitRadioactivity::becquerel());
-		$curie = $base->convertTo(UnitRadioactivity::curie());
-
-		$this->assertTrue($becquerel->value() == 1.0, "{$base} converted to becquerel should be equal to 1 Bq instead of {$becquerel}.");
-		$this->assertTrue($curie->value() == 1.0 / 3.7E+10, "{$base} converted to curie should be equal to 3.7E-10 Ci instead of {$curie}.");
+		$this->assertMeasurementEquals($base->convertTo(UnitRadioactivity::becquerel()), 1.0, $base, "becquerel");
+		$this->assertMeasurementEquals($base->convertTo(UnitRadioactivity::curie()), 1.0 / 3.7E+10, $base, "curie");
 	}
 
 }

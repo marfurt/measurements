@@ -15,6 +15,18 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitEnergy extends Dimension {
 
+	const SYMBOL_KILOJOULES = "KJ";
+	const SYMBOL_JOULES = "J";
+	const SYMBOL_KILOCALORIES = "kCal";
+	const SYMBOL_CALORIES = "cal";
+	const SYMBOL_KILOWATT_HOURS = "kWh";
+
+	const COEFFICIENT_KILOJOULES = 1000.0;
+	const COEFFICIENT_JOULES = 1.0;
+	const COEFFICIENT_KILOCALORIES = 4184.0;
+	const COEFFICIENT_CALORIES = 4.184;
+	const COEFFICIENT_KILOWATT_HOURS = 3600000.0;
+
 	/**
 	 * Returns the base unit of energy.
 	 *
@@ -32,7 +44,7 @@ class UnitEnergy extends Dimension {
 	 */
 	public static function kilojoules(): UnitEnergy
 	{
-		return new static("kJ", new UnitConverterLinear(1000.0));
+		return new static(static::SYMBOL_KILOJOULES, new UnitConverterLinear(static::COEFFICIENT_KILOJOULES));
 	}
 
 	/**
@@ -42,7 +54,7 @@ class UnitEnergy extends Dimension {
 	 */
 	public static function joules(): UnitEnergy
 	{
-		return new static("J", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_JOULES, new UnitConverterLinear(static::COEFFICIENT_JOULES));
 	}
 
 	/**
@@ -52,7 +64,7 @@ class UnitEnergy extends Dimension {
 	 */
 	public static function kilocalories(): UnitEnergy
 	{
-		return new static("kCal", new UnitConverterLinear(4184.0));
+		return new static(static::SYMBOL_KILOCALORIES, new UnitConverterLinear(static::COEFFICIENT_KILOCALORIES));
 	}
 
 	/**
@@ -62,7 +74,7 @@ class UnitEnergy extends Dimension {
 	 */
 	public static function calories(): UnitEnergy
 	{
-		return new static("cal", new UnitConverterLinear(4.184));
+		return new static(static::SYMBOL_CALORIES, new UnitConverterLinear(static::COEFFICIENT_CALORIES));
 	}
 
 	/**
@@ -72,7 +84,7 @@ class UnitEnergy extends Dimension {
 	 */
 	public static function kilowattHours(): UnitEnergy
 	{
-		return new static("kWh", new UnitConverterLinear(3600000.0));
+		return new static(static::SYMBOL_KILOWATT_HOURS, new UnitConverterLinear(static::COEFFICIENT_KILOWATT_HOURS));
 	}
 
 }

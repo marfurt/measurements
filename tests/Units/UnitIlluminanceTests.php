@@ -6,6 +6,8 @@ use Measurements\Units\UnitIlluminance;
 
 class UnitIlluminanceTests extends PHPUnit_Framework_TestCase {
 
+	use InteractsWithUnits;
+
 	/** @test */
 	public function it_defines_lux_as_base_unit()
 	{
@@ -17,9 +19,7 @@ class UnitIlluminanceTests extends PHPUnit_Framework_TestCase {
 	{
 		$base = new Measurement(1, UnitIlluminance::baseUnit());
 
-		$lux = $base->convertTo(UnitIlluminance::lux());
-
-		$this->assertTrue($lux->value() == 1.0, "{$base} converted to lux should be equal to 1 lx instead of {$lux}.");
+		$this->assertMeasurementEquals($base->convertTo(UnitIlluminance::lux()), 1.0, $base, "lux");
 	}
 
 }

@@ -13,6 +13,14 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitDuration extends Dimension {
 
+	const SYMBOL_SECONDS = "sec";
+	const SYMBOL_MINUTES = "min";
+	const SYMBOL_HOURS = "hr";
+
+	const COEFFICIENT_SECONDS = 1.0;
+	const COEFFICIENT_MINUTES = 60.0;
+	const COEFFICIENT_HOURS = 3600.0;
+
 	/**
 	 * Returns the base unit of duration, equal to seconds.
 	 *
@@ -30,7 +38,7 @@ class UnitDuration extends Dimension {
 	 */
 	public static function seconds(): UnitDuration
 	{
-		return new static("sec", new UnitConverterLinear(1));
+		return new static(static::SYMBOL_SECONDS, new UnitConverterLinear(static::COEFFICIENT_SECONDS));
 	}
 
 	/**
@@ -40,7 +48,7 @@ class UnitDuration extends Dimension {
 	 */
 	public static function minutes(): UnitDuration
 	{
-		return new static("min", new UnitConverterLinear(60));
+		return new static(static::SYMBOL_MINUTES, new UnitConverterLinear(static::COEFFICIENT_MINUTES));
 	}
 
 	/**
@@ -50,7 +58,7 @@ class UnitDuration extends Dimension {
 	 */
 	public static function hours(): UnitDuration
 	{
-		return new static("hr", new UnitConverterLinear(3600));
+		return new static(static::SYMBOL_HOURS, new UnitConverterLinear(static::COEFFICIENT_HOURS));
 	}
 
 }

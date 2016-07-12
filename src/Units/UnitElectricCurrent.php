@@ -14,6 +14,18 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitElectricCurrent extends Dimension {
 
+	const SYMBOL_MEGAAMPERES = "MA";
+	const SYMBOL_KILOAMPERES = "kA";
+	const SYMBOL_AMPERES = "A";
+	const SYMBOL_MILLIAMPERES = "mA";
+	const SYMBOL_MICROAMPERES = "µA";
+
+	const COEFFICIENT_MEGAAMPERES = 1E+6;
+	const COEFFICIENT_KILOAMPERES = 1000.0;
+	const COEFFICIENT_AMPERES = 1.0;
+	const COEFFICIENT_MILLIAMPERES = 0.001;
+	const COEFFICIENT_MICROAMPERES = 1E-6;
+
 	/**
 	 * Returns the base electric current current, equal to amperes.
 	 *
@@ -31,7 +43,7 @@ class UnitElectricCurrent extends Dimension {
 	 */
 	public static function megaamperes(): UnitElectricCurrent
 	{
-		return new static("MA", new UnitConverterLinear(1000000.0));
+		return new static(static::SYMBOL_MEGAAMPERES, new UnitConverterLinear(static::COEFFICIENT_MEGAAMPERES));
 	}
 
 	/**
@@ -41,7 +53,7 @@ class UnitElectricCurrent extends Dimension {
 	 */
 	public static function kiloamperes(): UnitElectricCurrent
 	{
-		return new static("kA", new UnitConverterLinear(1000.0));
+		return new static(static::SYMBOL_KILOAMPERES, new UnitConverterLinear(static::COEFFICIENT_KILOAMPERES));
 	}
 
 	/**
@@ -51,7 +63,7 @@ class UnitElectricCurrent extends Dimension {
 	 */
 	public static function amperes(): UnitElectricCurrent
 	{
-		return new static("A", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_AMPERES, new UnitConverterLinear(static::COEFFICIENT_AMPERES));
 	}
 
 	/**
@@ -61,7 +73,7 @@ class UnitElectricCurrent extends Dimension {
 	 */
 	public static function milliamperes(): UnitElectricCurrent
 	{
-		return new static("mA", new UnitConverterLinear(0.001));
+		return new static(static::SYMBOL_MILLIAMPERES, new UnitConverterLinear(static::COEFFICIENT_MILLIAMPERES));
 	}
 
 	/**
@@ -71,7 +83,7 @@ class UnitElectricCurrent extends Dimension {
 	 */
 	public static function microamperes(): UnitElectricCurrent
 	{
-		return new static("µA", new UnitConverterLinear(0.000001));
+		return new static(static::SYMBOL_MICROAMPERES, new UnitConverterLinear(static::COEFFICIENT_MICROAMPERES));
 	}
 
 }

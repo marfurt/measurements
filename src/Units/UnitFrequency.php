@@ -14,6 +14,24 @@ use Measurements\Converters\UnitConverterLinear;
  */
 class UnitFrequency extends Dimension {
 
+	const SYMBOL_TERAHERTZ = "THz";
+	const SYMBOL_GIGAHERTZ = "GHz";
+	const SYMBOL_MEGAHERTZ = "MHz";
+	const SYMBOL_KILOHERTZ = "kHz";
+	const SYMBOL_HERTZ = "Hz";
+	const SYMBOL_MILLIHERTZ = "mHz";
+	const SYMBOL_MICROHERTZ = "µHz";
+	const SYMBOL_NANOHERTZ = "nHz";
+
+	const COEFFICIENT_TERAHERTZ = 1E+12;
+	const COEFFICIENT_GIGAHERTZ = 1E+9;
+	const COEFFICIENT_MEGAHERTZ = 1E+6;
+	const COEFFICIENT_KILOHERTZ = 1000.0;
+	const COEFFICIENT_HERTZ = 1.0;
+	const COEFFICIENT_MILLIHERTZ = 0.001;
+	const COEFFICIENT_MICROHERTZ = 1E-6;
+	const COEFFICIENT_NANOHERTZ = 1E-9;
+
 	/**
 	 * Returns the base unit of frequency, equal to hertz.
 	 *
@@ -31,7 +49,7 @@ class UnitFrequency extends Dimension {
 	 */
 	public static function terahertz(): UnitFrequency
 	{
-		return new static("THz", new UnitConverterLinear(1E+12));
+		return new static(static::SYMBOL_TERAHERTZ, new UnitConverterLinear(static::COEFFICIENT_TERAHERTZ));
 	}
 
 	/**
@@ -41,7 +59,7 @@ class UnitFrequency extends Dimension {
 	 */
 	public static function gigahertz(): UnitFrequency
 	{
-		return new static("GHz", new UnitConverterLinear(1E+9));
+		return new static(static::SYMBOL_GIGAHERTZ, new UnitConverterLinear(static::COEFFICIENT_GIGAHERTZ));
 	}
 
 	/**
@@ -51,7 +69,7 @@ class UnitFrequency extends Dimension {
 	 */
 	public static function megahertz(): UnitFrequency
 	{
-		return new static("MHz", new UnitConverterLinear(1000000.0));
+		return new static(static::SYMBOL_MEGAHERTZ, new UnitConverterLinear(static::COEFFICIENT_MEGAHERTZ));
 	}
 
 	/**
@@ -61,7 +79,7 @@ class UnitFrequency extends Dimension {
 	 */
 	public static function kilohertz(): UnitFrequency
 	{
-		return new static("kHz", new UnitConverterLinear(1000.0));
+		return new static(static::SYMBOL_KILOHERTZ, new UnitConverterLinear(static::COEFFICIENT_KILOHERTZ));
 	}
 
 	/**
@@ -71,7 +89,7 @@ class UnitFrequency extends Dimension {
 	 */
 	public static function hertz(): UnitFrequency
 	{
-		return new static("Hz", new UnitConverterLinear(1.0));
+		return new static(static::SYMBOL_HERTZ, new UnitConverterLinear(static::COEFFICIENT_HERTZ));
 	}
 
 	/**
@@ -81,7 +99,7 @@ class UnitFrequency extends Dimension {
 	 */
 	public static function millihertz(): UnitFrequency
 	{
-		return new static("mHz", new UnitConverterLinear(0.001));
+		return new static(static::SYMBOL_MILLIHERTZ, new UnitConverterLinear(static::COEFFICIENT_MILLIHERTZ));
 	}
 
 	/**
@@ -91,7 +109,7 @@ class UnitFrequency extends Dimension {
 	 */
 	public static function microhertz(): UnitFrequency
 	{
-		return new static("µHz", new UnitConverterLinear(0.000001));
+		return new static(static::SYMBOL_MICROHERTZ, new UnitConverterLinear(static::COEFFICIENT_MICROHERTZ));
 	}
 
 	/**
@@ -101,7 +119,7 @@ class UnitFrequency extends Dimension {
 	 */
 	public static function nanohertz(): UnitFrequency
 	{
-		return new static("nHz", new UnitConverterLinear(1E-9));
+		return new static(static::SYMBOL_NANOHERTZ, new UnitConverterLinear(static::COEFFICIENT_NANOHERTZ));
 	}
 
 }

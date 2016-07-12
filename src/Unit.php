@@ -32,6 +32,13 @@ abstract class Unit implements Equatable {
 		return $this->symbol;
 	}
 
+	/**
+	 * Returns a boolean value that indicates whether the unit is equal to another given object.
+	 *
+	 * @param $other mixed The object with which to compare the unit.
+	 *
+	 * @return bool `true` if both objects are equal, otherwise `false`.
+	 */
 	public function isEqualTo($other)
 	{
 		if (! $other instanceof static) {
@@ -41,6 +48,11 @@ abstract class Unit implements Equatable {
 		return $this == $other;
 	}
 
+	/**
+	 * Converts the unit to its string representation.
+	 *
+	 * @return string A string that represents the unit.
+	 */
 	public function __toString()
 	{
 		return $this->symbol();
