@@ -63,11 +63,6 @@ class Measurement implements Comparable {
 		return $this->value;
 	}
 
-	public function __toString()
-	{
-		return $this->toString();
-	}
-
 	/**
 	 * Returns a string that represents the contents of the measurement.
 	 *
@@ -79,9 +74,19 @@ class Measurement implements Comparable {
 	}
 
 	/**
+	 * Converts the measurement to its string representation.
+	 *
+	 * @return string A string that represents the measurement.
+	 */
+	public function __toString()
+	{
+		return $this->toString();
+	}
+
+	/**
 	 * Returns a boolean value that indicates whether the measurement is equal to another given object.
 	 *
-	 * @param $other The object with which to compare the measurement.
+	 * @param mixed $other The object with which to compare the measurement.
 	 *
 	 * @return bool `true` if both objects are equal, otherwise `false`.
 	 */
@@ -103,7 +108,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a boolean value that indicates whether the measurement is greater than another given object.
 	 *
-	 * @param $object The object with which to compare the measurement.
+	 * @param mixed $object The object with which to compare the measurement.
 	 *
 	 * @return bool `true` if the ` is greater than object, otherwise `false`.
 	 */
@@ -117,7 +122,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a boolean value that indicates whether the measurement is greater than or equal to another given object.
 	 *
-	 * @param $object The object with which to compare the measurement.
+	 * @param mixed $object The object with which to compare the measurement.
 	 *
 	 * @return bool `true` if the measurement is greater than or equal to object, otherwise `false`.
 	 */
@@ -131,7 +136,7 @@ class Measurement implements Comparable {
 	/**
 	 * RReturns a boolean value that indicates whether the measurement is less than another given object.
 	 *
-	 * @param $object The object with which to compare the measurement.
+	 * @param mixed $object The object with which to compare the measurement.
 	 *
 	 * @return bool `true` if the measurement is less than object, otherwise `false`.
 	 */
@@ -145,7 +150,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a boolean value that indicates whether the measurement is less than or equal to another given object.
 	 *
-	 * @param $object The object with which to compare the measurement.
+	 * @param mixed $object The object with which to compare the measurement.
 	 *
 	 * @return bool `true` if the measurement is less than or equal to object, otherwise `false`.
 	 */
@@ -159,7 +164,7 @@ class Measurement implements Comparable {
 	/**
 	 * Compares the measurement to another given object.
 	 *
-	 * @param $object The object with which to compare the measurement.
+	 * @param mixed $object The object with which to compare the measurement.
 	 * @param callable $comparison The closure used to compare objects.
 	 *
 	 * @return mixed The result of the comparison between the measurement and the given object.
@@ -168,6 +173,10 @@ class Measurement implements Comparable {
 	 */
 	public function compareTo($object, callable $comparison)
 	{
+		if (! $object instanceof Measurement) {
+			return $comparison($this, $object);
+		}
+
 		if ($this->unit()->isEqualTo($object->unit())) {
 			return $comparison($this->value(), $object->value());
 		}
@@ -184,7 +193,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a measurement created by converting the measurement to the specified unit.
 	 *
-	 * @param $otherUnit Dimension The unit to convert the measurement.
+	 * @param Dimension $otherUnit The unit to convert the measurement.
 	 *
 	 * @return Measurement A new measurement object with a value calculated by converting into the new unit.
 	 *
@@ -215,7 +224,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a boolean that indicates whether the measurement can be converted to the specified unit.
 	 *
-	 * @param $unit Dimension The unit to convert the measurement.
+	 * @param Dimension $unit The unit to convert the measurement.
 	 *
 	 * @return bool `true` if the measurement can be converted to the specified unit, otherwise `false`.
 	 */
@@ -231,7 +240,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a new measurement by adding the receiver to the specified measurement.
 	 *
-	 * @param $measurement Measurement The measurement to be added.
+	 * @param Measurement $measurement The measurement to be added.
 	 *
 	 * @return Measurement A new measurement with a value equal to the receiver's value plus the value of the specified measurement converted into the unit of the receiver.
 	 *
@@ -256,7 +265,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a new measurement by adding the given value to the measurement.
 	 *
-	 * @param $value double The value to be added.
+	 * @param double $value The value to be added.
 	 *
 	 * @return Measurement A new measurement with a value equal to the receiver's value plus the specified value.
 	 */
@@ -268,7 +277,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a new measurement by subtracting the specified measurement from the receiver.
 	 *
-	 * @param $measurement Measurement The measurement to be subtracted.
+	 * @param Measurement $measurement The measurement to be subtracted.
 	 *
 	 * @return Measurement A new measurement with a value equal to the receiver's value minus the value of the specified measurement converted into the unit of the receiver.
 	 *
@@ -293,7 +302,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a new measurement by subtracting the given value from the measurement.
 	 *
-	 * @param $value double The value to be subtracted.
+	 * @param double $value The value to be subtracted.
 	 *
 	 * @return Measurement A new measurement with a value equal to the receiver's value minus the specified value.
 	 */
@@ -305,7 +314,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a new measurement by multiplying the receiver by the specified measurement.
 	 *
-	 * @param $measurement Measurement The measurement to be multiplied by.
+	 * @param Measurement $measurement The measurement to be multiplied by.
 	 *
 	 * @return Measurement A new measurement with a value equal to the receiver's value multiplied by the value of the specified measurement converted into the unit of the receiver.
 	 *
@@ -330,7 +339,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a new measurement by multiplying the measurement by the given value.
 	 *
-	 * @param $value double The value to be multiplied by.
+	 * @param double $value The value to be multiplied by.
 	 *
 	 * @return Measurement A new measurement with a value equal to the receiver's value multiplied by the specified value.
 	 */
@@ -342,7 +351,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a new measurement by dividing the receiver by the specified measurement.
 	 *
-	 * @param $measurement Measurement The measurement to divide by.
+	 * @param Measurement $measurement The measurement to divide by.
 	 *
 	 * @return Measurement A new measurement with a value equal to the receiver's value divided by the value of the specified measurement converted into the unit of the receiver.
 	 *
@@ -377,6 +386,41 @@ class Measurement implements Comparable {
 	}
 
 	/**
+	 * Handle dynamic calls to the object.
+	 *
+	 * @param  string  $method
+	 * @param  array   $parameters
+	 *
+	 * @return mixed
+	 *
+	 * @throws \BadMethodCallException
+	 */
+	public function __call($method, $parameters)
+	{
+		// Provide a shortcut to convert a measurement to a specific unit:
+		//     $meters = Length::meters($x);
+		//     $centimeters = $meters->toCentimeters();
+		// instead of
+		//     $meters = new Length($x, UnitLength::meters());
+		//     $centimeters = $meters->convertTo(UnitLength::centimeters());
+
+		if (substr($method, 0, 2) == 'to') {
+			$class = static::resolveUnitClass();
+			$method = lcfirst(substr($method, 2));
+			
+			if (method_exists($class, $method) && is_callable([ $class, $method ])) {
+				return $this->convertTo(call_user_func([ $class, $method ]));
+			}
+
+			if (!is_subclass_of($this, Measurement::class)) {
+				throw new BadMethodCallException("The caller must be a subclass of ".Measurement::class." to allow the short syntax conversion to {$method}.");
+			}
+
+			throw new BadMethodCallException("Cannot convert ".static::class." to {$method}.");
+		}
+	}
+
+	/**
 	 * Handle dynamic, static calls to the object.
 	 *
 	 * @param  string  $method
@@ -404,9 +448,8 @@ class Measurement implements Comparable {
 
 			return new static($parameters[0], call_user_func([ $class, $method ]));
 		}
-		else {
-			throw new BadMethodCallException("Invalid method {$method}() called on {$class} class.");
-		}
+
+		throw new BadMethodCallException("Invalid method {$method}() called on {$class} class.");
 	}
 
 	/**
