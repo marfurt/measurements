@@ -7,6 +7,13 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `ElectricCharge` class represents a specific quantities of electric charge.
+ *
+ * @method static ElectricCharge coulombs(float $value)
+ * @method static ElectricCharge megaampereHours(float $value)
+ * @method static ElectricCharge kiloampereHours(float $value)
+ * @method static ElectricCharge ampereHours(float $value)
+ * @method static ElectricCharge milliampereHours(float $value)
+ * @method static ElectricCharge microampereHours(float $value)
  */
 class ElectricCharge extends Measurement {
 

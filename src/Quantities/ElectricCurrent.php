@@ -7,6 +7,12 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `ElectricCurrent` class represents a specific quantities of electric current.
+ *
+ * @method static ElectricCurrent megaamperes(float $value)
+ * @method static ElectricCurrent kiloamperes(float $value)
+ * @method static ElectricCurrent amperes(float $value)
+ * @method static ElectricCurrent milliamperes(float $value)
+ * @method static ElectricCurrent microamperes(float $value)
  */
 class ElectricCurrent extends Measurement {
 

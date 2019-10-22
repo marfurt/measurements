@@ -7,6 +7,12 @@ use Measurements\Units\UnitElectricPotentialDifference;
 
 /**
  * The `ElectricPotentialDifference` class represents a specific quantities of electric potential difference.
+ *
+ * @method static ElectricPotentialDifference megavolts(float $value)
+ * @method static ElectricPotentialDifference kilovolts(float $value)
+ * @method static ElectricPotentialDifference volts(float $value)
+ * @method static ElectricPotentialDifference millivolts(float $value)
+ * @method static ElectricPotentialDifference microvolts(float $value)
  */
 class ElectricPotentialDifference extends Measurement {
 
