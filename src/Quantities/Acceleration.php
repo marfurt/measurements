@@ -9,6 +9,9 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `Acceleration` class represents a specific quantities of acceleration.
+ *
+ * @method static Acceleration metersPerSecondSquared(float $value)
+ * @method static Acceleration gravity(float $value)
  */
 class Acceleration extends Measurement {
 

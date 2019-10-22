@@ -7,6 +7,9 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `Radioactivity` class represents a specific quantities of radioactivity.
+ *
+ * @method static Radioactivity becquerel(float $value)
+ * @method static Radioactivity curie(float $value)
  */
 class Radioactivity extends Measurement {
 

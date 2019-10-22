@@ -8,6 +8,37 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `Volume` class represents a specific quantities of volume.
+ *
+ * @method static Volume megaliters(float $value)
+ * @method static Volume kiloliters(float $value)
+ * @method static Volume liters(float $value)
+ * @method static Volume deciliters(float $value)
+ * @method static Volume centiliters(float $value)
+ * @method static Volume milliliters(float $value)
+ * @method static Volume cubicKilometers(float $value)
+ * @method static Volume cubicMeters(float $value)
+ * @method static Volume cubicDecimeters(float $value)
+ * @method static Volume cubicMillimeters(float $value)
+ * @method static Volume cubicInches(float $value)
+ * @method static Volume cubicFeet(float $value)
+ * @method static Volume cubicYards(float $value)
+ * @method static Volume cubicMiles(float $value)
+ * @method static Volume acreFeet(float $value)
+ * @method static Volume bushels(float $value)
+ * @method static Volume teaspoons(float $value)
+ * @method static Volume tablespoons(float $value)
+ * @method static Volume fluidOunces(float $value)
+ * @method static Volume cups(float $value)
+ * @method static Volume pints(float $value)
+ * @method static Volume quarts(float $value)
+ * @method static Volume gallons(float $value)
+ * @method static Volume imperialTeaspoons(float $value)
+ * @method static Volume imperialTablespoons(float $value)
+ * @method static Volume imperialFluidOunces(float $value)
+ * @method static Volume imperialPints(float $value)
+ * @method static Volume imperialQuarts(float $value)
+ * @method static Volume imperialGallons(float $value)
+ * @method static Volume metricCups(float $value)
  */
 class Volume extends Measurement {
 

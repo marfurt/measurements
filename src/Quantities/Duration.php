@@ -7,6 +7,10 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `Duration` class represents specific quantities of duration.
+ *
+ * @method static Duration seconds(float $value)
+ * @method static Duration minutes(float $value)
+ * @method static Duration hours(float $value)
  */
 class Duration extends Measurement {
 

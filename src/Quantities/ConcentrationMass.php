@@ -9,6 +9,10 @@ use Measurements\Units\UnitConcentrationMass;
 
 /**
  * The `ConcentrationMass` class represents a specific quantities of concentration.
+ *
+ * @method static ConcentrationMass gramsPerLiter(float $value)
+ * @method static ConcentrationMass milligramsPerDeciliter(float $value)
+ * @method static ConcentrationMass millimolesPerLiterWithGramsPerMole(float $value)
  */
 class ConcentrationMass extends Measurement {
 

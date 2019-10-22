@@ -7,6 +7,8 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `Dispersion` class represents a specific quantities of dispersion.
+ *
+ * @method static Dispersion partsPerMillion(float $value)
  */
 class Dispersion extends Measurement {
 

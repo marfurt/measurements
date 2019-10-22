@@ -7,6 +7,13 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `Angle` class represents specific quantities of angle.
+ *
+ * @method static Angle degrees(float $value)
+ * @method static Angle arcMinutes(float $value)
+ * @method static Angle arcSeconds(float $value)
+ * @method static Angle radians(float $value)
+ * @method static Angle gradians(float $value)
+ * @method static Angle revolutions(float $value)
  */
 class Angle extends Measurement {
 

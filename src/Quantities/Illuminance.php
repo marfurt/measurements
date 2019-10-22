@@ -7,6 +7,8 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `Illuminance` class represents a specific quantities of illuminance.
+ *
+ * @method static Illuminance lux(float $value)
  */
 class Illuminance extends Measurement {
 

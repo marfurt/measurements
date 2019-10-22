@@ -7,6 +7,12 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `Energy` class represents a specific quantities of energy.
+ *
+ * @method static Energy kilojoules(float $value)
+ * @method static Energy joules(float $value)
+ * @method static Energy kilocalories(float $value)
+ * @method static Energy calories(float $value)
+ * @method static Energy kilowattHours(float $value)
  */
 class Energy extends Measurement {
 

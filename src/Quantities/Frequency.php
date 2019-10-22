@@ -7,6 +7,15 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `Frequency` class represents a specific quantities of frequency.
+ *
+ * @method static Frequency terahertz(float $value)
+ * @method static Frequency gigahertz(float $value)
+ * @method static Frequency megahertz(float $value)
+ * @method static Frequency kilohertz(float $value)
+ * @method static Frequency hertz(float $value)
+ * @method static Frequency millihertz(float $value)
+ * @method static Frequency microhertz(float $value)
+ * @method static Frequency nanohertz(float $value)
  */
 class Frequency extends Measurement {
 

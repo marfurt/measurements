@@ -9,6 +9,11 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `Speed` class represents a specific quantities of speed.
+ *
+ * @method static Speed metersPerSecond(float $value)
+ * @method static Speed kilometersPerHour(float $value)
+ * @method static Speed milesPerHour(float $value)
+ * @method static Speed knots(float $value)
  */
 class Speed extends Measurement {
 

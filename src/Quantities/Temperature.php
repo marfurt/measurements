@@ -7,6 +7,10 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `Temperature` class represents a specific quantities of temperature.
+ *
+ * @method static Temperature kelvin(float $value)
+ * @method static Temperature celsius(float $value)
+ * @method static Temperature fahrenheit(float $value)
  */
 class Temperature extends Measurement {
 
