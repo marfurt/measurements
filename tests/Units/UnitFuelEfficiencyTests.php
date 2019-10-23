@@ -15,13 +15,17 @@ class UnitFuelEfficiencyTests extends PHPUnit_Framework_TestCase {
 	}
 
 	/** @test */
-	public function it_converts_lengths()
+	public function it_converts_fuel_efficiencies()
 	{
 		$base = new Measurement(1, UnitFuelEfficiency::baseUnit());
 
 		$this->assertMeasurementEquals($base->convertTo(UnitFuelEfficiency::litersPer100Kilometers()), 1.0, $base, "liters per 100 kilometers");
 		$this->assertMeasurementEquals($base->convertTo(UnitFuelEfficiency::milesPerGallon()), 235.215, $base, "miles per gallon");
 		$this->assertMeasurementEquals($base->convertTo(UnitFuelEfficiency::milesPerImperialGallon()), 282.481, $base, "miles per imperial gallon");
+		$this->assertMeasurementEquals($base->convertTo(UnitFuelEfficiency::kilometersPerLiter()), 100.0, $base, "kilometers per liter");
+
+		$base = new Measurement(5, UnitFuelEfficiency::baseUnit());
+		$this->assertEquals(20.0, $base->convertTo(UnitFuelEfficiency::kilometersPerLiter())->value());
 	}
 
 }

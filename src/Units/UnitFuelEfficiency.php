@@ -18,10 +18,12 @@ class UnitFuelEfficiency extends Dimension {
 	const SYMBOL_LITERS_PER_100_KILOMETERS = "L/100km";
 	const SYMBOL_MILES_PER_GALLON = "mpg";
 	const SYMBOL_MILES_PER_IMPERIAL_GALLON = "mpg";
+	const SYMBOL_KILOMETERS_PER_LITER = "km/L";
 
 	const COEFFICIENT_LITERS_PER_100_KILOMETERS = 1.0;
 	const COEFFICIENT_MILES_PER_GALLON = 235.215;
 	const COEFFICIENT_MILES_PER_IMPERIAL_GALLON = 282.481;
+	const COEFFICIENT_KILOMETERS_PER_LITER = 0.01;
 
 	/**
 	 * Returns the base unit of fuel efficiency, equal to liters per 100 kilometers.
@@ -61,6 +63,16 @@ class UnitFuelEfficiency extends Dimension {
 	public static function milesPerImperialGallon(): UnitFuelEfficiency
 	{
 		return new static(self::SYMBOL_MILES_PER_IMPERIAL_GALLON, new UnitConverterReciprocal(self::COEFFICIENT_MILES_PER_IMPERIAL_GALLON));
+	}
+
+	/**
+	 * Returns the kilometers per liter unit of fuel efficiency.
+	 *
+	 * @return UnitFuelEfficiency The kilometers per liter unit of fuel efficiency.
+	 */
+	public static function kilometersPerLiter(): UnitFuelEfficiency
+	{
+		return new static(self::SYMBOL_KILOMETERS_PER_LITER, new UnitConverterLinear(self::COEFFICIENT_KILOMETERS_PER_LITER));
 	}
 
 }
