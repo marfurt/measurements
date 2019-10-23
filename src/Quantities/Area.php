@@ -8,6 +8,21 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `Area` class represents a specific quantities of area.
+ *
+ * @method static Area squareMegameters(float $value)
+ * @method static Area squareKilometers(float $value)
+ * @method static Area squareMeters(float $value)
+ * @method static Area squareCentimeters(float $value)
+ * @method static Area squareMillimeters(float $value)
+ * @method static Area squareMicrometers(float $value)
+ * @method static Area squareNanometers(float $value)
+ * @method static Area squareInches(float $value)
+ * @method static Area squareFeet(float $value)
+ * @method static Area squareYards(float $value)
+ * @method static Area squareMiles(float $value)
+ * @method static Area acres(float $value)
+ * @method static Area ares(float $value)
+ * @method static Area hectares(float $value)
  */
 class Area extends Measurement {
 

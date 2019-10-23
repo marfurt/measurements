@@ -7,6 +7,23 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `Mass` class represents a specific quantities of mass.
+ *
+ * @method static Mass kilograms(float $value)
+ * @method static Mass grams(float $value)
+ * @method static Mass decigrams(float $value)
+ * @method static Mass centigrams(float $value)
+ * @method static Mass milligrams(float $value)
+ * @method static Mass micrograms(float $value)
+ * @method static Mass nanograms(float $value)
+ * @method static Mass picograms(float $value)
+ * @method static Mass ounces(float $value)
+ * @method static Mass ouncesTroy(float $value)
+ * @method static Mass pounds(float $value)
+ * @method static Mass stones(float $value)
+ * @method static Mass metricTons(float $value)
+ * @method static Mass shortTons(float $value)
+ * @method static Mass carats(float $value)
+ * @method static Mass slugs(float $value)
  */
 class Mass extends Measurement {
 

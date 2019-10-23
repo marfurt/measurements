@@ -7,6 +7,10 @@ use Measurements\Exceptions\UnitException;
 
 /**
  * The `FuelEfficiency` class represents a specific quantities of fuel efficiency.
+ *
+ * @method static FuelEfficiency litersPer100Kilometers(float $value)
+ * @method static FuelEfficiency milesPerGallon(float $value)
+ * @method static FuelEfficiency milesPerImperialGallon(float $value)
  */
 class FuelEfficiency extends Measurement {
 
