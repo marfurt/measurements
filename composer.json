@@ -1,6 +1,6 @@
 {
-    "name": "nmarfurt/measurements",
-    "description": "A PHP library for representing and converting dimensional units of measure.",
+	"name": "nmarfurt/measurements",
+	"description": "A PHP library for representing and converting dimensional units of measure.",
 	"license": "MIT",
 	"keywords": ["measurement", "unit", "conversion"],
 	"authors": [
@@ -9,11 +9,11 @@
 			"email": "nmarfurt@gmail.com"
 		}
 	],
-    "require": {
-        "php": ">=7.0.0"
-    },
+	"require": {
+		"php": "^7.2"
+	},
 	"require-dev": {
-		"phpunit/phpunit": "5.4.*"
+		"phpunit/phpunit": "^8"
 	},
 	"autoload": {
 		"psr-4": {

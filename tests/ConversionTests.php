@@ -1,13 +1,13 @@
 <?php namespace Tests;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Measurements\Measurement;
 use Measurements\Units\UnitLength;
 use Measurements\Units\UnitDuration;
 use Measurements\Quantities\Length;
 use Measurements\Converters\UnitConverterLinear;
 
-class ConversionTests extends PHPUnit_Framework_TestCase {
+class ConversionTests extends TestCase {
 
 	/** @test */
 	public function it_checks_converter_linearity()

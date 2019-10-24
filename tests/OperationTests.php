@@ -1,10 +1,10 @@
 <?php namespace Tests;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Measurements\Measurement;
 use Measurements\Units\UnitLength;
 
-class OperationTests extends PHPUnit_Framework_TestCase {
+class OperationTests extends TestCase {
 
 	/** @test */
 	public function it_adds_measurements()

@@ -1,10 +1,10 @@
 <?php namespace Tests\Units;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Measurements\Measurement;
 use Measurements\Units\UnitVolume;
 
-class UnitVolumeTests extends PHPUnit_Framework_TestCase {
+class UnitVolumeTests extends TestCase {
 
 	use InteractsWithUnits;
 

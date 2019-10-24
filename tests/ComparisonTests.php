@@ -1,12 +1,12 @@
 <?php namespace Tests;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Measurements\Measurement;
 use Measurements\Units\UnitLength;
 use Measurements\Units\UnitDuration;
 use Measurements\Exceptions\UnitException;
 
-class ComparisonTests extends PHPUnit_Framework_TestCase {
+class ComparisonTests extends TestCase {
 
 	/** @test */
 	public function compared_measurements_must_have_same_units()

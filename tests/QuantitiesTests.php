@@ -1,6 +1,6 @@
 <?php namespace Tests;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use BadMethodCallException;
 use Measurements\Measurement;
 use Measurements\Units\UnitLength;
@@ -10,7 +10,7 @@ use Measurements\Quantities\Length;
 use Measurements\Quantities\Duration;
 use Measurements\Exceptions\UnitException;
 
-class QuantitiesTests extends PHPUnit_Framework_TestCase {
+class QuantitiesTests extends TestCase {
 
 	/** @test */
 	public function it_creates_quantities()
@@ -60,8 +60,8 @@ class QuantitiesTests extends PHPUnit_Framework_TestCase {
 		$speed = Speed::fromLengthAndDuration($distance, $time);
 
 		$this->assertTrue($speed instanceof Speed, "A speed instance should be of type ".Speed::class);
-		$this->assertEquals($speed->value(), 5, "Creating a speed measurement from $distance and $time should be equal to 5 m/s", 0.1);
-		$this->assertEquals($speed->toKilometersPerHour()->value(), 18, "Converting a speed of 5 m/s to km/h should be equal to 18 km/h", 0.1);
+		$this->assertEqualsWithDelta($speed->value(), 5, 0.1, "Creating a speed measurement from $distance and $time should be equal to 5 m/s");
+		$this->assertEqualsWithDelta($speed->toKilometersPerHour()->value(), 18, 0.1, "Converting a speed of 5 m/s to km/h should be equal to 18 km/h");
 	}
 
 }

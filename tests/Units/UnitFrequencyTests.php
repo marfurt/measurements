@@ -1,10 +1,10 @@
 <?php namespace Tests\Units;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Measurements\Measurement;
 use Measurements\Units\UnitFrequency;
 
-class UnitFrequencyTests extends PHPUnit_Framework_TestCase {
+class UnitFrequencyTests extends TestCase {
 
 	use InteractsWithUnits;
 

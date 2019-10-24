@@ -1,10 +1,10 @@
 <?php namespace Tests;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Measurements\Units\UnitLength;
 use Measurements\Units\UnitDuration;
 
-class UnitTests extends PHPUnit_Framework_TestCase {
+class UnitTests extends TestCase {
 
 	/** @test */
 	public function units_can_be_checked_for_equality()

@@ -1,10 +1,10 @@
 <?php namespace Tests\Units;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Measurements\Measurement;
 use Measurements\Units\UnitConcentrationMass;
 
-class UnitConcentrationMassTests extends PHPUnit_Framework_TestCase {
+class UnitConcentrationMassTests extends TestCase {
 
 	use InteractsWithUnits;
 

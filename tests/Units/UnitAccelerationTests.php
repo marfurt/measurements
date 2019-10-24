@@ -1,10 +1,10 @@
 <?php namespace Tests\Units;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Measurements\Measurement;
 use Measurements\Units\UnitAcceleration;
 
-class UnitAccelerationTests extends PHPUnit_Framework_TestCase {
+class UnitAccelerationTests extends TestCase {
 
 	use InteractsWithUnits;
 

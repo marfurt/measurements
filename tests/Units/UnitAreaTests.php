@@ -1,10 +1,10 @@
 <?php namespace Tests\Units;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use Measurements\Measurement;
 use Measurements\Units\UnitArea;
 
-class UnitAreaTests extends PHPUnit_Framework_TestCase {
+class UnitAreaTests extends TestCase {
 
 	use InteractsWithUnits;
 
