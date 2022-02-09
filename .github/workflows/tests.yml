@@ -1,26 +1,31 @@
 name: Tests
 
-on: 
+on:
   push:
     paths-ignore:
       - '**.md'
   pull_request:
     paths-ignore:
-      - '**.md' 
+      - '**.md'
 
 jobs:
   build:
 
+    strategy:
+      matrix:
+        php: [72, 74, 80, 81]
+
     runs-on: ubuntu-latest
+    container: srcoder/development-php:php${{ matrix.php }}-fpm
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
 
     - name: Validate composer.json and composer.lock
-      run: composer validate
+      run: composer2 validate
 
     - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
+      run: composer2 install --prefer-dist --no-progress --no-suggest
 
     - name: Run test suite
       run: ./vendor/bin/phpunit
