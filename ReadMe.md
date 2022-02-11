@@ -1,6 +1,6 @@
 # Measurements & Units
 
-[![Build Status](https://travis-ci.org/marfurt/measurements.svg?branch=master)](https://travis-ci.org/marfurt/measurements)
+![Build Status](https://github.com/marfurt/measurements/actions/workflows/tests.yml/badge.svg?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/nmarfurt/measurements/v/stable)](https://packagist.org/packages/nmarfurt/measurements)
 [![License](https://poser.pugx.org/nmarfurt/measurements/license)](https://packagist.org/packages/nmarfurt/measurements)
 
@@ -15,7 +15,9 @@ This is inspired by the [Measurement API](https://developer.apple.com/reference/
 
 The package can be installed via [Composer](https://getcomposer.org):
 
-	$ composer require nmarfurt/measurements
+```shell
+composer require nmarfurt/measurements
+```
 
 
 ## Library Classes
@@ -308,8 +310,10 @@ class UnitDigitalData extends Dimension {
 
 ## Generating API Documentation
 
-	$ phpdoc -d ./src/ -t ./doc/generated --template="xml"
-	$ phpdocmd ./doc/generated/structure.xml doc/
+```shell
+phpdoc -d ./src/ -t ./doc/generated --template="xml"
+phpdocmd ./doc/generated/structure.xml doc/
+```
 
 
 ## License
