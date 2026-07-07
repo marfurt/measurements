@@ -22,7 +22,7 @@ Methods
 
 ### __construct
 
-    mixed Measurements\Quantities\Duration::__construct(double $value, \Measurements\Unit $unit)
+    mixed Measurements\Quantities\Duration::__construct(float $value, \Measurements\Unit $unit)
 
 Initializes a new duration measurement with a specified floating-point value and unit.
 
@@ -32,7 +32,7 @@ Initializes a new duration measurement with a specified floating-point value and
 
 
 #### Arguments
-* $value **double** - &lt;p&gt;The measurement value.&lt;/p&gt;
+* $value **float** - &lt;p&gt;The measurement value.&lt;/p&gt;
 * $unit **[Measurements\Unit](Measurements-Unit.md)** - &lt;p&gt;The unit of measure.&lt;/p&gt;
 
 

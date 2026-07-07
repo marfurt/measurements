@@ -10,28 +10,28 @@ class UnitConverterReciprocal implements UnitConverter {
 	/**
 	 * The reciprocal value used in the unit conversion calculation.
 	 *
-	 * @var double
+	 * @var float
 	 */
 	protected $reciprocal;
 
 	/**
 	 * Initializes the unit converter with the specified reciprocal value.
 	 *
-	 * @param double $reciprocal The reciprocal value used in the unit conversion calculation.
+	 * @param float $reciprocal The reciprocal value used in the unit conversion calculation.
 	 */
 	public function __construct($reciprocal)
 	{
-		$this->reciprocal = (double)$reciprocal;
+		$this->reciprocal = (float)$reciprocal;
 	}
 
 	public function baseUnitValueFromValue($value)
 	{
-		return $this->reciprocal / (double)$value;
+		return $this->reciprocal / (float)$value;
 	}
 
 	public function valueFromBaseUnitValue($baseUnitValue)
 	{
-		return $this->reciprocal / (double)$baseUnitValue;
+		return $this->reciprocal / (float)$baseUnitValue;
 	}
 
 }
