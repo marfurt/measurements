@@ -22,7 +22,7 @@ Methods
 
 ### __construct
 
-    mixed Measurements\Quantities\Dispersion::__construct(double $value, \Measurements\Unit $unit)
+    mixed Measurements\Quantities\Dispersion::__construct(float $value, \Measurements\Unit $unit)
 
 Initializes a new dispersion measurement with a specified floating-point value and unit.
 
@@ -32,7 +32,7 @@ Initializes a new dispersion measurement with a specified floating-point value a
 
 
 #### Arguments
-* $value **double** - &lt;p&gt;The measurement value.&lt;/p&gt;
+* $value **float** - &lt;p&gt;The measurement value.&lt;/p&gt;
 * $unit **[Measurements\Unit](Measurements-Unit.md)** - &lt;p&gt;The unit of measure.&lt;/p&gt;
 
 

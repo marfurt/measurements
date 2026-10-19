@@ -144,7 +144,7 @@ Returns milligrams per deciliter unit of concentration.
 
 ### millimolesPerLiterWithGramsPerMole
 
-    \Measurements\Units\UnitConcentrationMass Measurements\Units\UnitConcentrationMass::millimolesPerLiterWithGramsPerMole(double $gramsPerMole)
+    \Measurements\Units\UnitConcentrationMass Measurements\Units\UnitConcentrationMass::millimolesPerLiterWithGramsPerMole(float $gramsPerMole)
 
 Returns the millimoles per liter unit with the specified number of grams per mole.
 
@@ -155,7 +155,7 @@ Returns the millimoles per liter unit with the specified number of grams per mol
 
 
 #### Arguments
-* $gramsPerMole **double** - &lt;p&gt;The mass, in grams, for a mole of a given constituent.&lt;/p&gt;
+* $gramsPerMole **float** - &lt;p&gt;The mass, in grams, for a mole of a given constituent.&lt;/p&gt;
 
 
 

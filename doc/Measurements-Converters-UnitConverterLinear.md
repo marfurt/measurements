@@ -23,7 +23,7 @@ Properties
 
 ### $coefficient
 
-    protected double $coefficient
+    protected float $coefficient
 
 The coefficient used in the linear unit conversion calculation.
 
@@ -34,7 +34,7 @@ The coefficient used in the linear unit conversion calculation.
 
 ### $constant
 
-    protected double $constant
+    protected float $constant
 
 The constant used in the linear unit conversion calculation.
 
@@ -49,7 +49,7 @@ Methods
 
 ### __construct
 
-    mixed Measurements\Converters\UnitConverterLinear::__construct(double $coefficient, double $constant)
+    mixed Measurements\Converters\UnitConverterLinear::__construct(float $coefficient, float $constant)
 
 Initializes the unit converter with the specified coefficient and constant.
 
@@ -59,8 +59,8 @@ Initializes the unit converter with the specified coefficient and constant.
 
 
 #### Arguments
-* $coefficient **double** - &lt;p&gt;The coefficient used in the linear unit conversion calculation.&lt;/p&gt;
-* $constant **double** - &lt;p&gt;The constant used in the linear unit conversion calculation.&lt;/p&gt;
+* $coefficient **float** - &lt;p&gt;The coefficient used in the linear unit conversion calculation.&lt;/p&gt;
+* $constant **float** - &lt;p&gt;The constant used in the linear unit conversion calculation.&lt;/p&gt;
 
 
 

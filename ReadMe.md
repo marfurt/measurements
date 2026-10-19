@@ -43,7 +43,7 @@ A `UnitConverter` describes how to convert a unit to and from the base unit of i
 
 A `Measurement` object represents a measured quantity, using a unit of measure and a value. The `Measurement` class provides a programmatic interface to converting measurements into different units, as well as calculating the sum or difference between two measurements.
 
-`Measurement` objects are initialized with a `Unit` object and double value. They are immutable and cannot be changed after being created.
+`Measurement` objects are initialized with a `Unit` object and float value. They are immutable and cannot be changed after being created.
 
 > The library provides specific subclasses (so called Quantities) for measurements that correspond to the provided units (see the list below).
  

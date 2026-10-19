@@ -14,7 +14,7 @@ class Measurement implements Comparable {
 	/**
 	 * The value component of the measurement.
 	 *
-	 * @var double
+	 * @var float
 	 */
 	protected $value;
 
@@ -28,7 +28,7 @@ class Measurement implements Comparable {
 	/**
 	 * Initializes a new measurement with a specified floating-point value and unit.
 	 *
-	 * @param double $value The measurement value.
+	 * @param float $value The measurement value.
 	 * @param Unit   $unit  The unit of measure.
 	 *
 	 * @throws \Measurements\Exceptions\MeasurementValueException
@@ -39,7 +39,7 @@ class Measurement implements Comparable {
 			throw new MeasurementValueException("Measurement value <{$value}> must be numeric.");
 		}
 
-		$this->value = (double)$value;
+		$this->value = (float)$value;
 		$this->unit = $unit;
 	}
 
@@ -56,7 +56,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns the measurement value, represented as a floating-point number.
 	 *
-	 * @return double The measurement value.
+	 * @return float The measurement value.
 	 */
 	public function value()
 	{
@@ -265,7 +265,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a new measurement by adding the given value to the measurement.
 	 *
-	 * @param double $value The value to be added.
+	 * @param float $value The value to be added.
 	 *
 	 * @return Measurement A new measurement with a value equal to the receiver's value plus the specified value.
 	 */
@@ -302,7 +302,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a new measurement by subtracting the given value from the measurement.
 	 *
-	 * @param double $value The value to be subtracted.
+	 * @param float $value The value to be subtracted.
 	 *
 	 * @return Measurement A new measurement with a value equal to the receiver's value minus the specified value.
 	 */
@@ -339,7 +339,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a new measurement by multiplying the measurement by the given value.
 	 *
-	 * @param double $value The value to be multiplied by.
+	 * @param float $value The value to be multiplied by.
 	 *
 	 * @return Measurement A new measurement with a value equal to the receiver's value multiplied by the specified value.
 	 */
@@ -376,7 +376,7 @@ class Measurement implements Comparable {
 	/**
 	 * Returns a new measurement by dividing the measurement by the given value.
 	 *
-	 * @param $value double The value to divide by.
+	 * @param $value float The value to divide by.
 	 *
 	 * @return Measurement A new measurement with a value equal to the receiver's value divided by the specified value.
 	 */

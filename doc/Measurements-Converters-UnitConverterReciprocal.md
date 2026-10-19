@@ -19,7 +19,7 @@ Properties
 
 ### $reciprocal
 
-    protected double $reciprocal
+    protected float $reciprocal
 
 The reciprocal value used in the unit conversion calculation.
 
@@ -34,7 +34,7 @@ Methods
 
 ### __construct
 
-    mixed Measurements\Converters\UnitConverterReciprocal::__construct(double $reciprocal)
+    mixed Measurements\Converters\UnitConverterReciprocal::__construct(float $reciprocal)
 
 Initializes the unit converter with the specified reciprocal value.
 
@@ -44,7 +44,7 @@ Initializes the unit converter with the specified reciprocal value.
 
 
 #### Arguments
-* $reciprocal **double** - &lt;p&gt;The reciprocal value used in the unit conversion calculation.&lt;/p&gt;
+* $reciprocal **float** - &lt;p&gt;The reciprocal value used in the unit conversion calculation.&lt;/p&gt;
 
 
 

@@ -17,7 +17,7 @@ class Duration extends Measurement {
 	/**
 	 * Initializes a new duration measurement with a specified floating-point value and unit.
 	 *
-	 * @param double $value The measurement value.
+	 * @param float $value The measurement value.
 	 * @param Unit   $unit  The unit of measure.
 	 *
 	 * @throws \Measurements\Exceptions\UnitException

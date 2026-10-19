@@ -55,7 +55,7 @@ class UnitConcentrationMass extends Dimension {
 	/**
 	 * Returns the millimoles per liter unit with the specified number of grams per mole.
 	 *
-	 * @param double $gramsPerMole The mass, in grams, for a mole of a given constituent.
+	 * @param float $gramsPerMole The mass, in grams, for a mole of a given constituent.
 	 *
 	 * @return UnitConcentrationMass A unit expressing millimoles per liter with the specified molar mass.
 	 */
